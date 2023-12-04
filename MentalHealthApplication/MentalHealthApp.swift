@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import HealthKit
 
 @main
 struct MentalHealthApplicationApp: App {
+    @StateObject var HK = HealthManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+                ContentView()
+                    .environmentObject(HK)
         }
+        .modelContainer(for: Entry.self)
     }
 }

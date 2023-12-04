@@ -7,18 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C91CE622B1CC101003FF404 /* MentalHealthApplicationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE612B1CC101003FF404 /* MentalHealthApplicationApp.swift */; };
-		1C91CE642B1CC101003FF404 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE632B1CC101003FF404 /* ContentView.swift */; };
+		1C91CE622B1CC101003FF404 /* MentalHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */; };
 		1C91CE662B1CC103003FF404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C91CE652B1CC103003FF404 /* Assets.xcassets */; };
 		1C91CE692B1CC103003FF404 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C91CE682B1CC103003FF404 /* Preview Assets.xcassets */; };
+		1C91CE742B1CCA54003FF404 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE732B1CCA54003FF404 /* EntryModel.swift */; };
+		1C91CE7A2B1CCE12003FF404 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE792B1CCE12003FF404 /* SettingsView.swift */; };
+		1C91CE7C2B1CCE1B003FF404 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE7B2B1CCE1B003FF404 /* HealthView.swift */; };
+		1C91CE7E2B1CCE5C003FF404 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE7D2B1CCE5C003FF404 /* ContentView.swift */; };
+		1C91CE802B1CD683003FF404 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */; };
+		1C91CE852B1D1445003FF404 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE842B1D1445003FF404 /* HealthManager.swift */; };
+		1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE862B1D3D0A003FF404 /* JournalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C91CE5E2B1CC101003FF404 /* MentalHealthApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalHealthApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C91CE612B1CC101003FF404 /* MentalHealthApplicationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalHealthApplicationApp.swift; sourceTree = "<group>"; };
-		1C91CE632B1CC101003FF404 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalHealthApp.swift; sourceTree = "<group>"; };
 		1C91CE652B1CC103003FF404 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C91CE682B1CC103003FF404 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1C91CE732B1CCA54003FF404 /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
+		1C91CE792B1CCE12003FF404 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1C91CE7B2B1CCE1B003FF404 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		1C91CE7D2B1CCE5C003FF404 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
+		1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MentalHealthApplication.entitlements; sourceTree = "<group>"; };
+		1C91CE842B1D1445003FF404 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		1C91CE862B1D3D0A003FF404 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +64,15 @@
 		1C91CE602B1CC101003FF404 /* MentalHealthApplication */ = {
 			isa = PBXGroup;
 			children = (
-				1C91CE612B1CC101003FF404 /* MentalHealthApplicationApp.swift */,
-				1C91CE632B1CC101003FF404 /* ContentView.swift */,
+				1C91CE862B1D3D0A003FF404 /* JournalView.swift */,
+				1C91CE842B1D1445003FF404 /* HealthManager.swift */,
+				1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */,
+				1C91CE7D2B1CCE5C003FF404 /* ContentView.swift */,
+				1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */,
+				1C91CE7B2B1CCE1B003FF404 /* HealthView.swift */,
+				1C91CE792B1CCE12003FF404 /* SettingsView.swift */,
+				1C91CE732B1CCA54003FF404 /* EntryModel.swift */,
+				1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */,
 				1C91CE652B1CC103003FF404 /* Assets.xcassets */,
 				1C91CE672B1CC103003FF404 /* Preview Content */,
 			);
@@ -137,8 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C91CE642B1CC101003FF404 /* ContentView.swift in Sources */,
-				1C91CE622B1CC101003FF404 /* MentalHealthApplicationApp.swift in Sources */,
+				1C91CE7A2B1CCE12003FF404 /* SettingsView.swift in Sources */,
+				1C91CE7E2B1CCE5C003FF404 /* ContentView.swift in Sources */,
+				1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */,
+				1C91CE622B1CC101003FF404 /* MentalHealthApp.swift in Sources */,
+				1C91CE7C2B1CCE1B003FF404 /* HealthView.swift in Sources */,
+				1C91CE742B1CCA54003FF404 /* EntryModel.swift in Sources */,
+				1C91CE802B1CD683003FF404 /* EditEntryView.swift in Sources */,
+				1C91CE852B1D1445003FF404 /* HealthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,12 +295,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MentalHealthApplication/MentalHealthApplication.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MentalHealthApplication/Preview Content\"";
 				DEVELOPMENT_TEAM = VMW2VPTDPN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This data will be used to display and calculate health related data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This data will be used to write health related data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -298,12 +327,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MentalHealthApplication/MentalHealthApplication.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MentalHealthApplication/Preview Content\"";
 				DEVELOPMENT_TEAM = VMW2VPTDPN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This data will be used to display and calculate health related data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This data will be used to write health related data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

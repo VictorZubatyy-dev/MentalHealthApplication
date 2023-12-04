@@ -7,17 +7,31 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    @EnvironmentObject var HK: HealthManager
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView{
+            JournalView()
+                .tabItem {
+                    Label("Journal", systemImage: "list.bullet.clipboard")
+                }
+            HealthView()
+                .tabItem {
+                    Label("Health", systemImage: "heart")
+                }
+                .onAppear(perform: HK.checkHealthKit)
+
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
-        .padding()
     }
 }
+
+
 
 #Preview {
     ContentView()
