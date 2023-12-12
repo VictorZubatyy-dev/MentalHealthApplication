@@ -1,0 +1,6 @@
+{
+  "MLModelCreatorDefinedKey" : {
+    "com.github.apple.coremltools.version" : "7.1",
+    "com.github.apple.coremltools.source" : "scikit-learn==1.1.2"
+  }
+}

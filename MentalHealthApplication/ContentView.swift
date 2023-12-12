@@ -22,7 +22,7 @@ struct ContentView: View {
                     Label("Health", systemImage: "heart")
                 }
                 .onAppear(perform: HK.checkHealthKit)
-
+                .onAppear(perform: HK.getModel)
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")

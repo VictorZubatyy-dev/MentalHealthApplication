@@ -8,6 +8,7 @@
 import SwiftUI
 import HealthKit
 import SwiftData
+import CoreML
 
 
 struct HealthView: View {
@@ -15,6 +16,17 @@ struct HealthView: View {
     
     var body: some View {
         VStack{
+            Text("Health")
+                .fontWeight(.bold)
+                .font(.largeTitle)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding([.top], 30)
+                .padding([.leading], 10)
+            Text("Sleep Efficiency: \(HK.SleepEfficiencyValue)")
+                .fontWeight(.bold)
+                .font(.subheadline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding([.leading], 10)
             List(HK.HKSamples, id: \.self){ minute in
                 VStack(alignment: .leading) {
                     Text("\(minute)")
@@ -23,6 +35,8 @@ struct HealthView: View {
         }
     }
 }
+
+
 
 
 

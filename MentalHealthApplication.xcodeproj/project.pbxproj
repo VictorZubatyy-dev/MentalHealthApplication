@@ -17,6 +17,7 @@
 		1C91CE802B1CD683003FF404 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */; };
 		1C91CE852B1D1445003FF404 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE842B1D1445003FF404 /* HealthManager.swift */; };
 		1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE862B1D3D0A003FF404 /* JournalView.swift */; };
+		1CF4DB0C2B1E4F1900478402 /* SleepEfficiency.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MentalHealthApplication.entitlements; sourceTree = "<group>"; };
 		1C91CE842B1D1445003FF404 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		1C91CE862B1D3D0A003FF404 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = SleepEfficiency.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		1C91CE602B1CC101003FF404 /* MentalHealthApplication */ = {
 			isa = PBXGroup;
 			children = (
+				1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */,
 				1C91CE862B1D3D0A003FF404 /* JournalView.swift */,
 				1C91CE842B1D1445003FF404 /* HealthManager.swift */,
 				1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */,
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF4DB0C2B1E4F1900478402 /* SleepEfficiency.mlpackage in Sources */,
 				1C91CE7A2B1CCE12003FF404 /* SettingsView.swift in Sources */,
 				1C91CE7E2B1CCE5C003FF404 /* ContentView.swift in Sources */,
 				1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */,

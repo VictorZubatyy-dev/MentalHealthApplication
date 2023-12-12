@@ -1,0 +1,48 @@
+{
+  "Outputs" : {
+    "Sleep efficiency" : {
+      "MLFeatureShortDescription" : ""
+    }
+  },
+  "Inputs" : {
+    "Bedtime_Hour" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Alcohol consumption" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Smoking status" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Exercise frequency" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Awakenings" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Sleep duration" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Bedtime_Minutes" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Deep sleep percentage" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Gender" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Caffeine consumption" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "Age" : {
+      "MLFeatureShortDescription" : ""
+    },
+    "REM sleep percentage" : {
+      "MLFeatureShortDescription" : ""
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}

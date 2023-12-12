@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "3C6A4BDC-DE0C-4EAF-9ED2-A7F4DA6A4C13": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        },
+        "52B2BA17-919F-4B45-B341-AE26133D6C33": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        },
+        "DB260AC8-4DAB-4E85-926A-C9385D2644F5": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "SleepEfficiency.mlmodel",
+            "path": "com.apple.CoreML/SleepEfficiency.mlmodel"
+        }
+    },
+    "rootModelIdentifier": "DB260AC8-4DAB-4E85-926A-C9385D2644F5"
+}
