@@ -12,7 +12,7 @@ import CoreML
 
 class HealthManager: ObservableObject{
     @Published var HKSamples = [HKQuantity]()
-    @Published var SleepEfficiencyValue = 0.0
+    @Published var SleepEfficiencyValue = 0.0    
 
     func getModel(){
         do {let model = try SleepEfficiency(configuration: MLModelConfiguration())
@@ -24,7 +24,6 @@ class HealthManager: ObservableObject{
     }
     
     func checkHealthKit(){
-
         if HKHealthStore.isHealthDataAvailable() {
 
             let healthStore = HKHealthStore()
@@ -39,7 +38,7 @@ class HealthManager: ObservableObject{
                     guard let sampleType = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleExerciseTime) else {
                         fatalError("*** This method should never fail ***")
                     }
-                    let today = Date()
+//                    let today = Date()
 
                     let sort = [
                         // We want descending order to get the most recent date FIRST
