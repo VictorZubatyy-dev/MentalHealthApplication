@@ -9,12 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct EditEntryView: View {
-    @Bindable var entry: Entry
+    @Bindable var log: Log
     var body: some View {
         Form{
-            TextField("Text", text:$entry.text, axis: .vertical)
-            TextField("Feeling", text:$entry.feeling)
-            DatePicker("Date", selection: $entry.date)
+            TextField("Text", text:$log.entry, axis: .vertical)
+            TextField("Feeling", text:$log.feeling)
         }
         .navigationTitle("Edit Entry")
     }

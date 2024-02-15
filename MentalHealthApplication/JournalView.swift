@@ -9,54 +9,54 @@ import SwiftUI
 import SwiftData
 
 struct JournalView: View {
-    //  model container environment variable used to access model context of container attached to content view
     @Environment(\.modelContext) var modelContext
-    //  sort entry objects
-    @Query(sort: \Entry.date, order: .reverse) var entries: [Entry]
-    //  Listening to changes made in editEntryView
-    @State private var path = [Entry]()
+    @Query var log: [Log]
+    @State private var path = [Log]()
+    @AppStorage(Constants.currentOnboardingVersion) private var hasSeenOnboardingView = false
+
     var body: some View {
         NavigationStack(path: $path){
             List {
-                ForEach(entries) { entry in
-                    NavigationLink(value: entry){
+                ForEach(log) { log in
+                    NavigationLink(value: log){
                         VStack(alignment: .leading) {
-                            Text(entry.text)
+                            Text(log.entry)
                                 .font(.headline)
-                            Text(entry.feeling)
+                            Text(log.feeling)
                                 .font(.subheadline)
-                            Text(entry.date.formatted(date: .long, time: .shortened))
                         }
                     }
                 }
                 .onDelete(perform: deleteEntries)
             }
-            .navigationTitle("Logs")
-            .navigationDestination(for: Entry.self, destination: EditEntryView.init)
+            .navigationDestination(for: Log.self, destination: EditEntryView.init)
             .toolbar{
                 Button("Add entry", systemImage: "plus", action: addEntry)
             }
+            Button("Remove key", systemImage: "minus", action: removekey)
         }
-    }
+        }
     
+    func removekey(){
+        hasSeenOnboardingView = false
+    }
+
     func addEntry(){
-        //      empty entry object
-        let entry = Entry()
-        //      inserted into model context
-        modelContext.insert(entry)
-        //      object is added to empty path state
-        path = [entry]
+        let log = Log()
+//   inserted into model context
+        modelContext.insert(log)
+//   object is added to empty path state
+        path = [log]
     }
     
     func deleteEntries(_ indexSet: IndexSet){
         for index in indexSet{
-            let entry = entries[index]
-            modelContext.delete(entry)
+            let log = log[index]
+            modelContext.delete(log)
         }
     }
 }
 
-
-#Preview {
-    JournalView()
-}
+//#Preview {
+//    JournalView()
+//}

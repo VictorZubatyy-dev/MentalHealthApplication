@@ -7,19 +7,25 @@
 
 import SwiftUI
 import HealthKit
-import CoreML
+import SwiftData
 
 @main
 struct MentalHealthApplicationApp: App {
-//    initalise empty statobject
-    @StateObject var HK = HealthManager()
-
+    let modelContainer: ModelContainer
+    
+    init() {
+        do {
+            modelContainer = try ModelContainer(for: Log.self, User.self)
+        } catch {
+            fatalError("Could not initialize ModelContainer")
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-                ContentView()
-                    .environmentObject(HK)
+            ContentView()
+                .modelContainer(modelContainer)
         }
-//        just model Entry used for SwiftData storage
-        .modelContainer(for: Entry.self)
     }
+    
 }

@@ -10,9 +10,9 @@ import HealthKit
 import SwiftData
 import CoreML
 
-
 struct HealthView: View {
     @EnvironmentObject var HK: HealthManager
+    @EnvironmentObject var userDetails: Users
     
     var body: some View {
         VStack{
@@ -32,9 +32,30 @@ struct HealthView: View {
                     Text("\(minute)")
                 }
             }
+            
+            Button(action: check){
+                Text("hi")
+                if (!userDetails.user.isEmpty){
+                    Text("User:\(userDetails.user[0].age)")
+                }
+            }
+//            Button("check", action: check){
+//               
+//            }
+           
+
+//            if (!userDetails.user.isEmpty){
+//                Form{
+//                    TextField("Age:", text:$userDetails.user[0].age, axis: .vertical)
+//                        .disabled(true)
+//                }
+//                .navigationTitle("Edit Entry")
+            }
         }
+    func check(){
+        print(userDetails.user.count)
     }
-}
+    }
 
 
 
