@@ -7,51 +7,61 @@
 
 import SwiftUI
 import SwiftData
+import PhotosUI
+
+extension View {
+    @available(iOS 14, *)
+    func navigationBarTitleTextColor(_ color: Color) -> some View {
+        let uiColor = UIColor(color)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor ]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor ]
+        return self
+    }
+}
 
 struct JournalView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var log: [Log]
-    @State private var path = [Log]()
     @AppStorage("userCreated") private var userCreated = ""
-
+    @AppStorage("userName") private var userName = ""
+    @State private var selectedEmoji = ""
+    @State private var path = [Log]()
+    let color = ColorPallete()
+    
+    
     var body: some View {
-        VStack{
-            NavigationStack(path: $path){
-                List {
-                    ForEach(log) { log in
-                        NavigationLink(value: log){
-                            VStack(alignment: .leading) {
-                                Text(log.entry)
-                                    .font(.headline)
-                                Text(log.feeling)
-                                    .font(.subheadline)
-                            }
-                        }
-                    }
-                    .onDelete(perform: deleteEntries)
-                }
+        NavigationStack(path: $path){
+            LogView()
                 .navigationDestination(for: Log.self, destination: EditEntryView.init)
+                .scrollContentBackground(.hidden)
+                .background(color.backgroundGradient)
+                .navigationTitle("\(userName) Logs")
+                .navigationBarTitleTextColor(.white)
                 .toolbar{
-                    Button("Add entry", systemImage: "plus", action: addEntry)
+                    Button(action: addEntry){
+                        Image(systemName: "plus").foregroundStyle(.white)
+                    }
                 }
-            }
         }
     }
     
     func addEntry(){
-        let log = Log()
-        modelContext.insert(log)
-        path = [log]
-    }
-    
-    func deleteEntries(_ indexSet: IndexSet){
-        for index in indexSet{
-            let log = log[index]
-            modelContext.delete(log)
+        var logDate: Date {
+            let calendar = Calendar.current
+            let now = Date()
+            let components = calendar.dateComponents([.year, .month, .day], from: now)
+            let logDate = calendar.date(from: components)!
+            return logDate
         }
+        //        Initialise objects
+        let caffeine = Caffeine(caffeineType: CaffeineType.none, caffeineTeaType: CaffeineTeaType.black, caffeineBeverageTypeAmountValue: 0.0)
+        let alcohol = Alcohol(alcoholType: AlcoholType.none, alcoholSpiritType: AlcoholSpiritType.Whiskey, alcoholWineType: AlcoholWineType.Red, alcoholSpiritTypeAmount: AlcoholSpiritTypeAmount.Jigger, alcoholWineTypeAmount: AlcoholWineTypeAmount.Glass, alcoholBeverageTypeAmountValue: 0.0)
+        let log = Log(date: logDate, entry: "", feeling: "", exercise: 0.0, mood: Mood.none, alcohol: alcohol, caffeine: caffeine)
+        modelContext.insert(log)
+        path.append(log)
     }
 }
 
 //#Preview {
 //    JournalView()
 //}
+

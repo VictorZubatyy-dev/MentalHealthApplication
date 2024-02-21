@@ -9,16 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SettingsView: View {
-    @State private var path = [User]()
-    @AppStorage("userName") private var userName = ""
-    @AppStorage("userAge") private var userAge = ""
-    @AppStorage("userGender") private var userGender = ""
-    @AppStorage("userSmokingStatus") private var userSmokingStatus = ""
-    @AppStorage("userAwakenings") private var userAwakenings = 0
-    @AppStorage("exerciseFrequency") private var exerciseFrequency = 0
-    @AppStorage("userExerciseGoal") private var userExerciseGoal = 0
-    @AppStorage("userSleepGoal") private var userSleepGoal = 0
-    static let userDetails = ["Username", "Age", "Gender", "Smoking Status", "Awakenings", "Exercise Frequency", "Exercise Goal", "Sleep Goal"]
+    static let userDetails = ["Username", "Age", "Gender", "Smoking Status", "Awakenings", "Exercise Frequency", "Exercise Goal", "Sleep Goal", "Bedtime Goal"]
     
     var body: some View {
         VStack(alignment: .leading){

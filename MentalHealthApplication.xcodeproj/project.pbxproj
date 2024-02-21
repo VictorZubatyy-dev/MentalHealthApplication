@@ -18,10 +18,15 @@
 		1C91CE802B1CD683003FF404 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */; };
 		1C91CE852B1D1445003FF404 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE842B1D1445003FF404 /* HealthManager.swift */; };
 		1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE862B1D3D0A003FF404 /* JournalView.swift */; };
+		1C962D522B95092D00DFE2A9 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C962D512B95092D00DFE2A9 /* LogView.swift */; };
+		1C962D582B955B3200DFE2A9 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C962D572B955B3200DFE2A9 /* DateFormatter.swift */; };
+		1CE7D7552B993AFA00FACFC8 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7D7542B993AFA00FACFC8 /* SheetView.swift */; };
+		1CE7D7592B9A10C100FACFC8 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7D7582B9A10C100FACFC8 /* ColorPallete.swift */; };
 		1CF4DB0C2B1E4F1900478402 /* SleepEfficiency.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */; };
 		1CF55C262B7124FE00CA8A03 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF55C252B7124FE00CA8A03 /* OnboardingScreen.swift */; };
 		1CF55C282B71264B00CA8A03 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF55C272B71264B00CA8A03 /* OnboardingView.swift */; };
 		1CF55C2A2B71627A00CA8A03 /* OnboardingHealthScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF55C292B71627A00CA8A03 /* OnboardingHealthScreen.swift */; };
+		1CFA60FF2B87A6B800B79910 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA60FE2B87A6B800B79910 /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +43,15 @@
 		1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MentalHealthApplication.entitlements; sourceTree = "<group>"; };
 		1C91CE842B1D1445003FF404 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		1C91CE862B1D3D0A003FF404 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		1C962D512B95092D00DFE2A9 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		1C962D572B955B3200DFE2A9 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		1CE7D7542B993AFA00FACFC8 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		1CE7D7582B9A10C100FACFC8 /* ColorPallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
 		1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = SleepEfficiency.mlpackage; sourceTree = "<group>"; };
 		1CF55C252B7124FE00CA8A03 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		1CF55C272B71264B00CA8A03 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1CF55C292B71627A00CA8A03 /* OnboardingHealthScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHealthScreen.swift; sourceTree = "<group>"; };
+		1CFA60FE2B87A6B800B79910 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,9 @@
 				1CF55C272B71264B00CA8A03 /* OnboardingView.swift */,
 				1CF55C292B71627A00CA8A03 /* OnboardingHealthScreen.swift */,
 				1C471E282B7D5F4800222F7A /* ContentView.swift */,
+				1CFA60FE2B87A6B800B79910 /* SwiftUIView.swift */,
+				1C962D512B95092D00DFE2A9 /* LogView.swift */,
+				1CE7D7542B993AFA00FACFC8 /* SheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -75,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				1C91CE842B1D1445003FF404 /* HealthManager.swift */,
+				1C962D572B955B3200DFE2A9 /* DateFormatter.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -98,6 +112,7 @@
 		1C833A7F2B7E4856000DB8BD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1CE7D7582B9A10C100FACFC8 /* ColorPallete.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -215,11 +230,16 @@
 				1CF55C2A2B71627A00CA8A03 /* OnboardingHealthScreen.swift in Sources */,
 				1CF4DB0C2B1E4F1900478402 /* SleepEfficiency.mlpackage in Sources */,
 				1C91CE7A2B1CCE12003FF404 /* SettingsView.swift in Sources */,
+				1C962D582B955B3200DFE2A9 /* DateFormatter.swift in Sources */,
+				1CE7D7592B9A10C100FACFC8 /* ColorPallete.swift in Sources */,
 				1CF55C282B71264B00CA8A03 /* OnboardingView.swift in Sources */,
 				1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */,
 				1C91CE622B1CC101003FF404 /* MentalHealthApp.swift in Sources */,
+				1C962D522B95092D00DFE2A9 /* LogView.swift in Sources */,
 				1C91CE7C2B1CCE1B003FF404 /* HealthView.swift in Sources */,
 				1C91CE742B1CCA54003FF404 /* Model.swift in Sources */,
+				1CE7D7552B993AFA00FACFC8 /* SheetView.swift in Sources */,
+				1CFA60FF2B87A6B800B79910 /* SwiftUIView.swift in Sources */,
 				1C91CE802B1CD683003FF404 /* EditEntryView.swift in Sources */,
 				1C471E292B7D5F4800222F7A /* ContentView.swift in Sources */,
 				1CF55C262B7124FE00CA8A03 /* OnboardingScreen.swift in Sources */,

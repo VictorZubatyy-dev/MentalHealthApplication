@@ -8,10 +8,16 @@
 import SwiftUI
 import Foundation
 
+
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @StateObject var HK = HealthManager()
     @AppStorage("userCreated") private var userCreated = ""
+    let color = ColorPallete()
+    
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+    }
     
     var body: some View {
         if !userCreated.isEmpty {
@@ -22,15 +28,16 @@ struct ContentView: View {
                     }
                 HealthView()
                     .tabItem {
-                        Label("Health", systemImage: "heart")
+                        Label("Health", systemImage: "heart.fill")
                     }
-                
                 SettingsView()
                     .tabItem {
-                        Label("Settings", systemImage: "gear")
+                        Label{Text("Settings")} icon: {Image("customgear")
+                            }
                     }
             }
         }
+        
         else {
             if(userCreated.isEmpty){
                 OnboardingView()
@@ -39,7 +46,7 @@ struct ContentView: View {
     }
 }
 
-//#Preview {
-//    ContentView()
-//}
+#Preview {
+    ContentView()
+}
 ///

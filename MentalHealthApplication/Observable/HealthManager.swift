@@ -12,16 +12,7 @@ import CoreML
 
 class HealthManager: ObservableObject{
     @Published var HKSamples = [HKQuantity]()
-    @Published var SleepEfficiencyValue = 0.0    
-
-    func getModel(){
-        do {let model = try SleepEfficiency(configuration: MLModelConfiguration())
-            let prediction = try model.prediction(Age: 20, Gender: 0, Sleep_duration: 8, REM_sleep_percentage: 20, Deep_sleep_percentage: 20, Awakenings: 2, Caffeine_consumption: 20, Alcohol_consumption: 1, Smoking_status: 0, Exercise_frequency: 3, Bedtime_Hour: 10, Bedtime_Minutes: 10)
-            print("Prediction: \(prediction.Sleep_efficiency)")
-            SleepEfficiencyValue = prediction.Sleep_efficiency
-        }
-        catch{fatalError("Model failed to load")}
-    }
+    @Published var SleepEfficiencyValue = 0.0 
     
     func checkHealthKit(){
         if HKHealthStore.isHealthDataAvailable() {
