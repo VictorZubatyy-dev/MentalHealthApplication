@@ -62,88 +62,10 @@
             filePath = "MentalHealthApplication/Views/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "09DEF490-9F4C-42AC-B418-84C6CC42B8FD - 15811f7e08b22b2b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.ContentView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "636">
-               </Location>
-               <Location
-                  uuid = "09DEF490-9F4C-42AC-B418-84C6CC42B8FD - 15811f7e08b22b0a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.ContentView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "636">
-               </Location>
-               <Location
-                  uuid = "09DEF490-9F4C-42AC-B418-84C6CC42B8FD - 15811f7e08b22b2b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.ContentView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "896">
-               </Location>
-               <Location
-                  uuid = "09DEF490-9F4C-42AC-B418-84C6CC42B8FD - 15811f7e08b22b2b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.ContentView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "736">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D17F68C1-7DFC-4671-BB2A-6602F6C58CF8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MentalHealthApplication/Views/EditEntryView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "setSpiritTypeAmountValue()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -156,102 +78,10 @@
             filePath = "MentalHealthApplication/Views/HealthView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "fetchLogs()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C750E013-6BBC-4D72-B99B-FB41B44FCC20 - 5e4b827e7f8bd7c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Int) -&gt; Swift.Int in variable initialization expression of MentalHealthApplication.HealthView.minutes : Swift.Array&lt;Swift.Int&gt;"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "C750E013-6BBC-4D72-B99B-FB41B44FCC20 - c005eb8a60faac0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.init() -&gt; MentalHealthApplication.HealthView"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "1636">
-               </Location>
-               <Location
-                  uuid = "C750E013-6BBC-4D72-B99B-FB41B44FCC20 - de9c1a6029a5b2c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.init(HK: SwiftUI.EnvironmentObject&lt;MentalHealthApplication.HealthManager&gt;, modelContext: SwiftUI.Environment&lt;SwiftData.ModelContext&gt;) -&gt; MentalHealthApplication.HealthView"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "1360">
-               </Location>
-               <Location
-                  uuid = "C750E013-6BBC-4D72-B99B-FB41B44FCC20 - 5426475f17dc5e99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.fetchLogs() -&gt; ()"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "252">
-               </Location>
-               <Location
-                  uuid = "C750E013-6BBC-4D72-B99B-FB41B44FCC20 - 5426475f17dc569b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.fetchLogs() -&gt; ()"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "252">
-               </Location>
-               <Location
-                  uuid = "C750E013-6BBC-4D72-B99B-FB41B44FCC20 - 5426475f17dc569b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.fetchLogs() -&gt; ()"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "264">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -264,42 +94,10 @@
             filePath = "MentalHealthApplication/Views/HealthView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "fetchLogs()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6EFE032F-98C0-4BCF-94E6-E09CB00068EC - 5426475f17dc5f74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.fetchLogs() -&gt; ()"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "548">
-               </Location>
-               <Location
-                  uuid = "6EFE032F-98C0-4BCF-94E6-E09CB00068EC - f87c4e900f5aa870"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (MentalHealthApplication.Log) -&gt; () in MentalHealthApplication.HealthView.fetchLogs() -&gt; ()"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -312,135 +110,10 @@
             filePath = "MentalHealthApplication/Views/HealthView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "fetchLogs()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8B2AC084-DA73-447B-839D-2A4593D5DCD3 - 7cbf0643c4217f6e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of MentalHealthApplication.HealthView.exerciseFrequency : Swift.Int"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "8B2AC084-DA73-447B-839D-2A4593D5DCD3 - de9c1a6029a5b34d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.init(HK: SwiftUI.EnvironmentObject&lt;MentalHealthApplication.HealthManager&gt;, modelContext: SwiftUI.Environment&lt;SwiftData.ModelContext&gt;) -&gt; MentalHealthApplication.HealthView"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "2016">
-               </Location>
-               <Location
-                  uuid = "8B2AC084-DA73-447B-839D-2A4593D5DCD3 - f87c4e900f5aa870"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (MentalHealthApplication.Log) -&gt; () in MentalHealthApplication.HealthView.fetchLogs() -&gt; ()"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F477BD83-14C1-4657-BB48-FB5B3B2EAFE1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MentalHealthApplication/Views/HealthView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "F477BD83-14C1-4657-BB48-FB5B3B2EAFE1 - a7b27f24c81338de"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "876">
-               </Location>
-               <Location
-                  uuid = "F477BD83-14C1-4657-BB48-FB5B3B2EAFE1 - a7b27f24c81338bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "876">
-               </Location>
-               <Location
-                  uuid = "F477BD83-14C1-4657-BB48-FB5B3B2EAFE1 - bcfd37c59904b330"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #4 () -&gt; () in implicit closure #3 (MentalHealthApplication.HealthView) -&gt; () -&gt; () in MentalHealthApplication.HealthView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "F477BD83-14C1-4657-BB48-FB5B3B2EAFE1 - a7b27f24c81338bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MentalHealthApplication.HealthView.body.getter : some"
-                  moduleName = "MentalHealthApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vic/Desktop/Swift%20Projects/MentalJournal/MentalHealthApplication/Views/HealthView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "864">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -453,9 +126,313 @@
             filePath = "MentalHealthApplication/Views/HealthView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "getModel()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5784264B-4E3A-418E-9F4E-2CFDB7237309"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Model/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "Log"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BA4BDED-C162-4ECC-A374-13F06BD22C73"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Model/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "predicate(allEntries:searchDate:chosenMood:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F1D96FC-A2BC-4DF6-A5B7-F4761C036C41"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Model/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "predicate(allEntries:searchDate:chosenMood:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "697BA4F1-7BAF-430B-81A2-839A4E06D629"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Model/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "predicate(allEntries:searchDate:chosenMood:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4EFCFAD2-991E-42CC-A83C-C0D16BC1989F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Model/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "predicate(allEntries:searchDate:chosenMood:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61072EA6-B4A1-47C3-AF6E-E9CFC53CEEED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "805017C3-3A9E-479B-92BB-46BADA6DE689"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "fetchLogs()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9710C4D0-DE28-4438-ADB2-04DE19499509"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "fetchLogs()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C449385E-83AF-47F4-9496-E34494017579"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
+            landmarkName = "getMoodStatus(mood:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ADEE1CB8-61CF-43A4-B9D1-435352B8E74B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
+            landmarkName = "getMoodStatus(mood:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F42580F4-8A39-41A1-B313-B93FD37456E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
+            landmarkName = "healthKit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABFB222B-D2D5-4BAF-88FF-804153ED6E6D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "fetchLogs()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC7E4C7C-622A-4DE7-ACA0-DFE84A80CE11"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
+            landmarkName = "healthKit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6BE2F944-8937-4125-9D02-274ED7676668"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
+            landmarkName = "healthKit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC4900C5-95E9-457E-9689-693858021C59"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
+            landmarkName = "healthKit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E02FC246-0FBA-4C3F-B1C3-3DD69A03467D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
+            landmarkName = "healthKit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEC4D70B-3EB3-4E87-AE65-7E63BDA466E9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
+            landmarkName = "healthKit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD28E9D2-1578-4B21-9EC0-BA3F57FECCB6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "fetchLogs()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "049FC08F-2D6F-48D4-90B5-8948CB3E0638"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalHealthApplication/Views/HealthView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
+            landmarkName = "fetchLogs()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

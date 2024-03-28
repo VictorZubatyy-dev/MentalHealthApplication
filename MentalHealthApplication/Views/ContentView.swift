@@ -7,18 +7,12 @@
 
 import SwiftUI
 import Foundation
-
+import HealthKit
+import HealthKitUI
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @StateObject var HK = HealthManager()
     @AppStorage("userCreated") private var userCreated = ""
-    let color = ColorPallete()
-    
-    init() {
-        UITabBar.appearance().unselectedItemTintColor = UIColor.white
-    }
-    
     var body: some View {
         if !userCreated.isEmpty {
             TabView{
@@ -26,14 +20,13 @@ struct ContentView: View {
                     .tabItem {
                         Label("Journal", systemImage: "list.bullet.clipboard")
                     }
-                HealthView()
+                HealthView(totalCalories: [])
                     .tabItem {
                         Label("Health", systemImage: "heart.fill")
                     }
                 SettingsView()
                     .tabItem {
-                        Label{Text("Settings")} icon: {Image("customgear")
-                            }
+                        Label("Settings", systemImage: "gear")
                     }
             }
         }

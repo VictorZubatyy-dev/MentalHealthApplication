@@ -11,36 +11,15 @@ import PhotosUI
 
 struct LogView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var log: [Log]
-    let color = ColorPallete()
-    
+    @Query var logs: [Log]
     var body: some View {
         List {
-            ForEach(log) { log in
+            ForEach(logs) { log in
                 NavigationLink(value: log){
                     VStack(alignment: .leading, spacing: 5) {
-                        
                         HStack{
                             Text(log.entry).bold()
-                            switch log.mood{
-                            case .none:
-                                EmptyView()
-                            case .😕:
-                                Text(log.mood.rawValue)
-                                    .font(.title2)
-                            case .🙁:
-                                Text(log.mood.rawValue)
-                                    .font(.title2)
-                            case.😐:
-                                Text(log.mood.rawValue)
-                                    .font(.title2)
-                            case.🙂:
-                                Text(log.mood.rawValue)
-                                    .font(.title2)
-                            case.😁:
-                                Text(log.mood.rawValue)
-                                    .font(.title2)
-                            }
+                            Text(log.mood != "none" ? log.mood : " ")
                         }
                         
                         switch log.alcohol.alcoholType{
@@ -50,52 +29,80 @@ struct LogView: View {
                             Text("Alcohol").bold()
                             HStack{
                                 Text(log.alcohol.alcoholWineTypeAmount.rawValue + " of " + log.alcohol.alcoholWineType.rawValue)
-                                    .font(.subheadline)
                                 Text(log.alcohol.alcoholType.rawValue)
-                                    .font(.subheadline)
                             }
-                            Text("\(log.alcohol.alcoholBeverageTypeAmountValue)")
+                            .font(.subheadline)
+
+                            Text("\(log.alcohol.alcoholBeverageTypeAmountValue) oz of alcohol")
+                                .font(.subheadline)
                             
                         case .🥃:
+                            Divider()
+                            Text("Alcohol").bold()
                             HStack{
-                                Text(log.alcohol.alcoholSpiritTypeAmount.rawValue + " of " + log.alcohol.alcoholSpiritType.rawValue).bold()
+                                Text(log.alcohol.alcoholSpiritTypeAmount.rawValue + " of " + log.alcohol.alcoholSpiritType.rawValue)
                                 Text(log.alcohol.alcoholType.rawValue)
                             }
-                            Text("\(log.alcohol.alcoholBeverageTypeAmountValue)")
+                            .font(.subheadline)
+                            
+                            Text(String(format: "%.2f oz of alchol", log.alcohol.alcoholBeverageTypeAmountValue))
+                                .font(.subheadline)
                         }
                         
-                        Section{
-                            //check that there is data stored
-                            if let imageData = log.photo,
-                               //check if the data is an image
-                               let uiImage = UIImage(data: imageData){
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                                    .scaledToFit()
+                        switch log.caffeine.caffeineType {
+                        case .none:
+                            EmptyView()
+                        case .tea:
+                            Divider()
+                            Text("Caffeine").bold()
+                            HStack{
+                                Text(log.caffeine.caffeineTeaTypeAmount.rawValue + " of " + log.caffeine.caffeineTeaType.rawValue)
+                                Text(log.caffeine.caffeineType.rawValue)
                             }
-                            Text("\(log.date, formatter: dateFormatter)")
-                                .font(.footnote)
-                                .scaledToFit()
+                            .font(.subheadline)
+
+                            Text(String(format: "%.2f mg of caffeine", log.caffeine.caffeineBeverageTypeAmountValue))
+                                .font(.subheadline)
+
+                        case .coffee:
+                            Divider()
+                            Text("Caffeine").bold()
+                            HStack{
+                                Text(log.caffeine.caffeineCoffeeTypeAmount.rawValue + " of " + log.caffeine.caffeineCoffeeType.rawValue)
+                                Text(log.caffeine.caffeineType.rawValue)
+                            }
+                            .font(.subheadline)
+
+                            Text("\(log.caffeine.caffeineBeverageTypeAmountValue) mg of caffeine")
+                                .font(.subheadline)
                         }
                     }
                 }
-                .listRowBackground(Color.cyan)
-                .foregroundStyle(.white)
                 .listRowSpacing(5)
+                .listRowBackground(Color.primaryCustomBlue)
+                .foregroundStyle(.white)
             }
             .onDelete(perform: deleteEntries)
         }
     }
     
+    init(allEntries: Bool,
+         searchDate: Date,
+         chosenMood: String) {
+        
+        let predicate = Log.predicate(allEntries: allEntries, searchDate: searchDate, chosenMood: chosenMood)
+        
+        _logs = Query(filter: predicate)
+    }
+    
     func deleteEntries(_ indexSet: IndexSet){
         for index in indexSet{
-            let log = log[index]
+            let log = logs[index]
             modelContext.delete(log)
         }
     }
 }
 
 //#Preview {
-//    LogView()
+//    LogView(sort: SortDescriptor(\Log.entry), searchString: "")
 //}

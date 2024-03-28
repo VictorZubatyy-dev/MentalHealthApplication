@@ -11,9 +11,53 @@ import SwiftUI
 import SwiftData
 
 struct ColorPallete{
+    /// default background colour of log and health view
     var backgroundGradient = LinearGradient(
-        colors: [Color.blue, Color.teal],
+        colors: [.primaryCustomBlue, .secondaryCustomBlue],
         startPoint: .top, endPoint: .bottom)
     
-  
+    var defaultSleepGradient = LinearGradient(
+        colors: [.blue, .mint],
+        startPoint: .top, endPoint: .bottom)
+    
+    /// health view mood background colours
+    var defaultMoodGradient = LinearGradient(
+        colors: [.indigo, .purple],
+        startPoint: .top, endPoint: .bottom)
+
+    var verySadMoodGradient = LinearGradient(
+        colors: [.primaryCustomBlue, .blue],
+        startPoint: .top, endPoint: .bottom)
+    
+    var sadMoodGradient = LinearGradient(
+        colors: [.blue, .primaryCustomBlue],
+        startPoint: .top, endPoint: .bottom)
+    
+    var contentMoodGradient = LinearGradient(
+        colors: [.red, .orange],
+        startPoint: .top, endPoint: .bottom)
+    
+    var happyMoodGradient = LinearGradient(
+        colors: [.green, .mint],
+        startPoint: .top, endPoint: .bottom)
+    
+    var veryHappyMoodGradient = LinearGradient(
+        colors: [.green, .mint],
+        startPoint: .top, endPoint: .bottom)
+    
+    var exerciseGoalNotAchieved = LinearGradient(
+        colors: [.red, .orange],
+        startPoint: .top, endPoint: .bottom)
+    
+    var exerciseGoalAchieved = LinearGradient(
+        colors: [.green, .mint],
+        startPoint: .top, endPoint: .bottom)
+    
+    var calorieGoalNotAchieved = LinearGradient(
+        colors: [.red, .orange],
+        startPoint: .top, endPoint: .bottom)
+    
+    var calorieGoalAchieved = LinearGradient(
+        colors: [.green, .mint],
+        startPoint: .top, endPoint: .bottom)
 }

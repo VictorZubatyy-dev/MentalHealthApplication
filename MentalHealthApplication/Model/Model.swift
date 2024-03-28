@@ -58,21 +58,27 @@ enum AlcoholType: String, CaseIterable, Identifiable, Codable{
     var id: Self {self}
 }
 
-enum Mood: String, CaseIterable, Identifiable, Codable{
+enum Mood: String, CaseIterable{
     case none, 🙁, 😕, 😐, 🙂, 😁
-    var id: Self {self}
 }
+
 
 @Model
 class Caffeine
 {
     var caffeineType: CaffeineType
     var caffeineTeaType: CaffeineTeaType
+    var caffeineCoffeeType: CaffeineCoffeeType
+    var caffeineTeaTypeAmount: CaffeineTeaTypeAmount
+    var caffeineCoffeeTypeAmount: CaffeineCoffeeTypeAmount
     var caffeineBeverageTypeAmountValue: Double
     
-    init(caffeineType: CaffeineType, caffeineTeaType: CaffeineTeaType, caffeineBeverageTypeAmountValue: Double) {
+    init(caffeineType: CaffeineType, caffeineTeaType: CaffeineTeaType, caffeineCoffeeType: CaffeineCoffeeType, caffeineTeaTypeAmount: CaffeineTeaTypeAmount, caffeineCoffeeTypeAmount: CaffeineCoffeeTypeAmount, caffeineBeverageTypeAmountValue: Double) {
         self.caffeineType = caffeineType
         self.caffeineTeaType = caffeineTeaType
+        self.caffeineCoffeeType = caffeineCoffeeType
+        self.caffeineTeaTypeAmount = caffeineTeaTypeAmount
+        self.caffeineCoffeeTypeAmount = caffeineCoffeeTypeAmount
         self.caffeineBeverageTypeAmountValue = caffeineBeverageTypeAmountValue
     }
 }
@@ -97,17 +103,17 @@ class Alcohol{
 }
 
 @Model
-class Log {
+class Log{
     var date: Date
     var entry: String
     var feeling: String
     var exercise: Double
-    var mood: Mood
+    var mood: String
     var alcohol: Alcohol
     var caffeine: Caffeine
     @Attribute(.externalStorage) var photo: Data?
     
-    init(date: Date, entry: String, feeling: String, exercise: Double, mood: Mood, alcohol: Alcohol, caffeine: Caffeine) {
+    init(date: Date, entry: String, feeling: String, exercise: Double, mood: String, alcohol: Alcohol, caffeine: Caffeine) {
         self.date = date
         self.entry = entry
         self.feeling = feeling
@@ -115,5 +121,49 @@ class Log {
         self.mood = mood
         self.alcohol = alcohol
         self.caffeine = caffeine
+    }
+}
+
+extension Log {
+    /// A filter that checks for logs with the chosen date.
+    ///
+//    /need a bool for chosen mood
+    static func predicate(
+        allEntries: Bool,
+        searchDate: Date,
+        chosenMood: String
+    ) -> Predicate<Log> {
+        
+        if (allEntries){
+            return #Predicate<Log> { log in
+                (!log.entry.isEmpty)
+            }
+        }
+    
+        else if (chosenMood != "none"){
+            return #Predicate<Log> { log in
+                log.mood == chosenMood
+            }
+        }
+        
+        else if (!allEntries && chosenMood == "none"){
+            let calendar = Calendar.autoupdatingCurrent
+            let start = calendar.startOfDay(for: searchDate)
+            let end = calendar.date(byAdding: .init(day: 1), to: start) ?? start
+            
+            return #Predicate<Log> { log in
+                (log.date > start && log.date < end)
+                &&
+                (!log.entry.isEmpty)
+            }
+        }
+        
+        else{
+            return #Predicate<Log> { log in
+                (!log.entry.isEmpty)
+            }
+        }
+        
+        
     }
 }
