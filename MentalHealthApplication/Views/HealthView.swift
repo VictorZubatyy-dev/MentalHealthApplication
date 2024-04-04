@@ -11,6 +11,7 @@ import HealthKitUI
 import SwiftData
 import CoreML
 import Charts
+import ConfettiSwiftUI
 
 struct HealthView: View {
     @Environment(\.modelContext) var modelContext
@@ -19,7 +20,7 @@ struct HealthView: View {
     @State private var totalCaffeineValue = 0.0
     /// sleep efficiency prediction value
     @State private var sleepEfficiency = 0.0
-        
+    
     /// colours for the health, sleep, mood view
     let gradient = ColorPallete()
     @State private var moodColour = LinearGradient.init(colors: [Color.purple], startPoint: UnitPoint(x: 0.0, y: 0.0), endPoint: UnitPoint(x: 0.0, y: 0.0))
@@ -30,7 +31,6 @@ struct HealthView: View {
     @AppStorage("userSmokingStatus") private var userSmokingStatus = ""
     @AppStorage("userAwakenings") private var userAwakenings = 0
     @AppStorage("exerciseFrequency") private var exerciseFrequency = 0
-    @AppStorage("userExerciseGoal") private var userExerciseGoal = 0
     @AppStorage("userSleepGoalHour") private var userSleepGoalHour = 0
     @AppStorage("userSleepGoalMinute") private var userSleepGoalMinute = 0
     @AppStorage("userSleepBedTimeHour") private var userSleepBedTimeHour = 0
@@ -44,7 +44,7 @@ struct HealthView: View {
     @State private var sharingExerciseTime: HKAuthorizationStatus = HKAuthorizationStatus.notDetermined
     
     @Query var logs: [Log]
-
+    
     @State private var set = NSMutableSet()
     
     /// Calories struct for storing HK queries
@@ -63,25 +63,28 @@ struct HealthView: View {
         var id = UUID()
     }
     
-/// Past 7 days calories and exercise struct state
+    /// Past 7 days calories and exercise struct state
     @State private var calories: [Calories] = []
     @State private var exercise: [Exercise] = []
     @State private var exerciseDate: [String] = []
     @State private var calorieDate: [String] = []
-
     
-///    Todays exercise goals
+    
+    ///    Todays exercise goals
     @State private var todaysExercise: Double = 0.0
     @State private var todaysExerciseGoal: Double = 0.0
     @State private var exerciseGoal: HKQuantity = HKQuantity.init(unit: HKUnit.minute(), doubleValue: 0.0)
     
-///    Todays calories goals
+    ///    Todays calories goals
     @State var totalCalories: [Double]
     @State private var todaysCalories: Double = 0.0
     @State private var todaysCaloriesGoal: Double = 0.0
     @State private var todaysCalorieGoal: HKQuantity = HKQuantity.init(unit: HKUnit.kilocalorie(), doubleValue: 0.0)
     
+    ///    Past week days
     @State private var pastWeek: [String] = []
+    
+    @State private var goalsAchieved: Int = 0
     
     var body: some View {
         ZStack (alignment: .topLeading){
@@ -94,10 +97,26 @@ struct HealthView: View {
                     HStack(alignment: .firstTextBaseline) {
                         VStack(alignment: .leading){
                             Text("Sleep").font(.title2).bold()
-                            Text(String(format: "Score: %.2f", 0.30343))
+                            Text("Score: " + "\(Int(sleepEfficiency))")
                                 .font(.subheadline)
-                            Text("Hrs: 10hrs")
-                                .font(.subheadline)
+                            if userSleepGoalMinute == 0{
+                                HStack{
+                                    Text("Goal:")
+                                        .font(.subheadline)
+                                    Text("\(userSleepGoalHour) hr")
+                                        .font(.subheadline)
+                                }
+                            }
+                            else if userSleepGoalMinute == 30{
+                                Text("Goal:")
+                                    .font(.footnote)
+                                HStack{
+                                    Text("\(userSleepGoalHour)hr")
+                                        .font(.footnote)
+                                    Text("\(userSleepGoalMinute)mins")
+                                        .font(.footnote)
+                                }
+                            }
                         }
                         Image(systemName: "bed.double.fill")
                         Button {
@@ -106,6 +125,7 @@ struct HealthView: View {
                             Image(systemName: "info.circle")
                                 .foregroundStyle(.white)
                         }
+                        
                         .sheet(isPresented: $showingSheet) {
                             SheetView()
                         }
@@ -127,7 +147,7 @@ struct HealthView: View {
                         }
                         
                         Image(systemName: "person.fill")
-
+                        
                         Button {
                             showingSheet.toggle()
                         } label: {
@@ -146,12 +166,13 @@ struct HealthView: View {
                     })
                 }
                 .padding()
-            
+                
                 ScrollView(showsIndicators: false){
                     VStack(alignment: .leading){
                         Text("Goals").font(.title).bold()
                             .padding(.leading, 5)
                             .frame(alignment: .leading)
+                        
                         HStack(alignment: .firstTextBaseline) {
                             HStack(alignment: .firstTextBaseline) {
                                 VStack(alignment: .leading){
@@ -169,6 +190,7 @@ struct HealthView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundStyle(todaysExercise.isLess(than: todaysExerciseGoal) ? gradient.exerciseGoalNotAchieved : gradient.exerciseGoalAchieved)
                             })
+                            .confettiCannon(counter: $goalsAchieved)
                             
                             Spacer()
                             
@@ -187,6 +209,7 @@ struct HealthView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundStyle(todaysCalories.isLess(than: todaysCaloriesGoal) ? gradient.calorieGoalNotAchieved : gradient.calorieGoalAchieved)
                             })
+                            .confettiCannon(counter: $goalsAchieved)
                         }
                     }
                     .padding()
@@ -264,7 +287,6 @@ struct HealthView: View {
                                     .foregroundStyle(.white)
                             }
                         }
-
                     }
                     .frame(width: 350, height: 200)
                 }
@@ -276,7 +298,23 @@ struct HealthView: View {
                     await healthKit()
                 }
             }
-            //            .onAppear(perform: getModel)
+            .onAppear(perform: {
+                goalsAchievedSuccess()
+            })
+            .onAppear(perform: getModel)
+        }
+    }
+    
+    func goalsAchievedSuccess(){
+        if todaysCalories >= todaysCaloriesGoal && todaysExercise >= todaysExerciseGoal && todaysExerciseGoal != 0 && todaysCaloriesGoal != 0{
+            goalsAchieved += 1
+        }
+        else if todaysCalories >= todaysCaloriesGoal && todaysExerciseGoal != 0 && todaysCaloriesGoal != 0{
+            goalsAchieved += 1
+        }
+        
+        else if todaysExercise >= todaysExerciseGoal && todaysExerciseGoal != 0 && todaysCaloriesGoal != 0{
+            goalsAchieved += 1
         }
     }
     
@@ -287,7 +325,7 @@ struct HealthView: View {
         var totalCaffeineFetchValue = 0.0
         var mood: [String] = []
         
-///     clear all fetch values during load
+        ///     clear all fetch values during load
         totalAlcoholValue = 0.0
         totalCaffeineValue = 0.0
         mood.removeAll()
@@ -308,10 +346,6 @@ struct HealthView: View {
                 if log.mood != "none"{
                     mood.append(log.mood)
                 }
-                print(totalAlcoholFetchValue)
-                print(totalCaffeineFetchValue)
-                print(mood)
-                
                 totalAlcoholValue = totalAlcoholFetchValue
                 totalCaffeineValue = totalCaffeineFetchValue
             }
@@ -321,17 +355,11 @@ struct HealthView: View {
         let mappedItems = mood.map { ($0, 1) }
         let counts = Dictionary(mappedItems, uniquingKeysWith: +)
         let max_mood = counts.max { $0.value < $1.value }
-
+        
         moodss = max_mood?.key ?? "none"
-        print(moodss)
         
-        ///get moodstatus if, no value, use none case, then set if case returns to case string else to empty case string
+        //get moodstatus if, no value, use none case, then set if case returns to case string else to empty case string
         moodColour = getMoodStatus(mood: Mood(rawValue: moodss) ?? Mood.none) ?? LinearGradient.init(colors: [Color.purple], startPoint: UnitPoint(x: 0.0, y: 0.0), endPoint: UnitPoint(x: 0.0, y: 0.0))
-        print(moodColour)
-        print(moods)
-        
-        print("Total alcohol: \(totalAlcoholValue)")
-        print("Total caffeine: \(totalCaffeineValue)")
     }
     
     func getMoodStatus(mood: Mood) -> LinearGradient?{
@@ -357,23 +385,24 @@ struct HealthView: View {
             if HKHealthStore.isHealthDataAvailable() {
                 let healthStore = HKHealthStore()
                 
-                // Create the HealthKit data types your app
-                // needs to read and write.
+                // Create the HealthKit data types menjour. needs for sharing
                 let toShare: Set = [
                     HKQuantityType(.activeEnergyBurned)
                 ]
                 
+                // Create the HealthKit data types menjour. needs for reading
                 let toRead: Set = [
                     HKQuantityType(.activeEnergyBurned),
                     HKQuantityType(.appleExerciseTime),
                     HKActivitySummaryType.activitySummaryType()
                 ]
-                                
-                // Asynchronously request authorization to the data.
+                
+                // Asynchronously request authorization to the data
                 try await healthStore.requestAuthorization(toShare: toShare, read: toRead)
-
+                
                 //check authorisation status
                 let activeEneryBurned = healthStore.authorizationStatus(for: HKQuantityType(.activeEnergyBurned))
+                //check what the authorisation status is
                 switch activeEneryBurned{
                 case .notDetermined:
                     sharing = .notDetermined
@@ -385,22 +414,22 @@ struct HealthView: View {
                     // Create a predicate for this week's samples.
                     let calendar = Calendar(identifier: .gregorian)
                     let today = calendar.startOfDay(for: Date())
-
+                    
                     guard let endDate = calendar.date(byAdding: .day, value: 1, to: today) else {
                         fatalError("*** Unable to calculate the end time ***")
                     }
-
+                    
                     guard let startDate = calendar.date(byAdding: .day, value: -7, to: endDate) else {
                         fatalError("*** Unable to calculate the start time ***")
                     }
                     
                     let thisWeek = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
-
+                    
                     // Create the query descriptor.
                     let activeEnergyType = HKQuantityType(.activeEnergyBurned)
                     let activeEnergyBurnedThisWeek = HKSamplePredicate.quantitySample(type: activeEnergyType, predicate:thisWeek)
                     let everyDay = DateComponents(day:1)
-
+                    
                     let sumOfActiveEnergyBurnedQuery = HKStatisticsCollectionQueryDescriptor(
                         predicate: activeEnergyBurnedThisWeek,
                         options: .cumulativeSum,
@@ -409,25 +438,25 @@ struct HealthView: View {
                     
                     let activeEnergy = try await sumOfActiveEnergyBurnedQuery.result(for: healthStore)
                     // Iterate through the statistics
-                    
-                        activeEnergy.enumerateStatistics(from: startDate, to: endDate) { statistics, stop in
-                            let date = statistics.startDate
-                            var dateString = dateFormatter.string(from: date)
-                            
-                            let totalCalories = statistics.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) ?? 0.0
-                            
-                            if date < Date(){
-                                if date == today{
-                                    dateString = "Today"
-                                }
-                                calories.append(Calories(day: dateString, calories: totalCalories, colour: "Calories (kcal)"))
-                                calorieDate.append(dateString)
-                            }
-                            
+                    activeEnergy.enumerateStatistics(from: startDate, to: endDate) { statistics, stop in
+                        let date = statistics.startDate
+                        var dateString = dateFormatter.string(from: date)
+                        
+                        let totalCalories = statistics.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) ?? 0.0
+                        
+                        if date < Date(){
                             if date == today{
-                                todaysCalories = totalCalories
+                                dateString = "Today"
                             }
+                            calories.append(Calories(day: dateString, calories: totalCalories, colour: "Calories (kcal)"))
+                            calorieDate.append(dateString)
                         }
+                        
+                        if date == today{
+                            todaysCalories = totalCalories
+                        }
+                    }
+                    
                     
                 @unknown default:
                     sharing = .notDetermined
@@ -439,7 +468,7 @@ struct HealthView: View {
                 guard let endDate = calendar.date(byAdding: .day, value: 1, to: today) else {
                     fatalError("*** Unable to calculate the end time ***")
                 }
-
+                
                 guard let startDate = calendar.date(byAdding: .day, value: -7, to: endDate) else {
                     fatalError("*** Unable to calculate the start time ***")
                 }
@@ -447,59 +476,58 @@ struct HealthView: View {
                 exercise.removeAll()
                 // Create the query descriptor.
                 let thisWeek = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
-
+                
                 let exerciseTime = HKQuantityType(.appleExerciseTime)
                 
                 let exerciseTimeThisWeek = HKSamplePredicate.quantitySample(type: exerciseTime, predicate:thisWeek)
                 
                 let everyDay = DateComponents(day:1)
-
+                
                 let sumOfExerciseMinutesQuery = HKStatisticsCollectionQueryDescriptor(
                     predicate: exerciseTimeThisWeek,
                     options: .cumulativeSum,
                     anchorDate: endDate,
                     intervalComponents: everyDay)
-
+                
                 let exerciseMinutes = try await sumOfExerciseMinutesQuery.result(for: healthStore)
                 // Iterate through the statistics
-                    exerciseMinutes.enumerateStatistics(from: startDate, to: endDate) { statistics, stop in
-                        let date = statistics.startDate
-                        var dateString = dateFormatter.string(from: date)
-                        
-                        let exerciseMinutes = statistics.sumQuantity()?.doubleValue(for: HKUnit.minute()) ?? 0.0
-                        if date < Date(){
-                            if date == today{
-                                dateString = "Today"
-                            }
-                            exercise.append(Exercise(day: dateString, exercise: exerciseMinutes, colour: "Exercise (mins)"))
-                            exerciseDate.append(dateString)
-                            print(exerciseDate)
-                        }
-                        
+                exerciseMinutes.enumerateStatistics(from: startDate, to: endDate) { statistics, stop in
+                    let date = statistics.startDate
+                    var dateString = dateFormatter.string(from: date)
+                    
+                    let exerciseMinutes = statistics.sumQuantity()?.doubleValue(for: HKUnit.minute()) ?? 0.0
+                    
+                    if date < Date(){
                         if date == today{
-                            todaysExercise = exerciseMinutes
+                            dateString = "Today"
                         }
+                        exercise.append(Exercise(day: dateString, exercise: exerciseMinutes, colour: "Exercise (mins)"))
+                        exerciseDate.append(dateString)
                     }
-
+                    
+                    if date == today{
+                        todaysExercise = exerciseMinutes
+                    }
+                }
+                
                 let summaryCalendar = NSCalendar.current
                 let summaryEndDate = Date()
-                 
+                
                 guard let startDate = calendar.date(byAdding: .day, value: -7, to: summaryEndDate) else {
                     fatalError("*** Unable to create the start date ***")
                 }
-
+                
                 let units: Set<Calendar.Component> = [.day, .month, .year, .era]
-
+                
                 var startDateComponents = calendar.dateComponents(units, from: startDate)
                 startDateComponents.calendar = summaryCalendar
-
+                
                 var endDateComponents = calendar.dateComponents(units, from: summaryEndDate)
                 endDateComponents.calendar = summaryCalendar
-
+                
                 // Create the predicate for the query
                 let summariesWithinRange = HKQuery.predicate(forActivitySummariesBetweenStart: endDateComponents,
                                                              end: endDateComponents)
-                
                 let query = HKActivitySummaryQuery(predicate: summariesWithinRange) { (query, summariesOrNil, errorOrNil) -> Void in
                     guard let summaries = summariesOrNil else {
                         return
@@ -514,17 +542,15 @@ struct HealthView: View {
                 healthStore.execute(query)
             }
         } catch {
-            // Typically, authorization requests only fail if you haven't set the
-            // usage and share descriptions in your app's Info.plist, or if
-            // Health data isn't available on the current device.
+            //Catch error if usage and share descriptions are not set in the Info.plist or Health data is not available on the current device
             fatalError("*** An unexpected error occurred while requesting authorization: \(error.localizedDescription) ***")
         }
     }
-        
+    
     
     func getModel(){
         //converting string values to their corresponding double values trained in the ML model
-        var genderToML = 0
+        var genderToML = 0.0
         var sleepHourToML = 0.0
         var sleepMinuteToML = 0.0
         var sleepGoalToML = 0.0
@@ -535,40 +561,36 @@ struct HealthView: View {
         
         //male = 0, female = 1 in model
         if userGender == "Male"{
-            genderToML = 0
+            genderToML = 0.0
         }
         
         else{
-            genderToML = 1
+            genderToML = 0.1
         }
         
         sleepHourToML = Double(userSleepGoalHour)
         print(sleepHourToML)
         sleepMinuteToML = Double(userSleepGoalMinute)
         print(sleepMinuteToML)
-        //        ensure double variables are correctly formatted for model prediction
+        //      ensure double variables are correctly formatted for model prediction
         if sleepMinuteToML == 30.0{
-            sleepMinuteToML = 0.5
+            sleepMinuteToML = 0.30
         }
         
-        //        sleep goal formatted to double for ML model
+        //      sleep goal formatted to double for ML model sleep duration
         sleepGoalToML = sleepHourToML + sleepMinuteToML
         print(sleepGoalToML)
-        
-        //        rem sleep calculation
+        //      rem sleep calculation
         rem_Sleep = ((sleepGoalToML * 60) / 25)
         print(rem_Sleep)
         
-        //        deep sleep calculation
+        //      deep sleep calculation
         deep_Sleep = ((sleepGoalToML * 60) / 25)
         print(deep_Sleep)
         
         sleep_Awakenings = Double(userAwakenings)
         
-        //        caffeine
-        //        alcohol
-        
-        //        smoking status
+        //      smoking status
         if userSmokingStatus == "Yes"{
             smoking_Status = 0
         }
@@ -579,19 +601,15 @@ struct HealthView: View {
         
         do {
             let model = try SleepEfficiency(configuration: MLModelConfiguration())
-            let prediction = try model.prediction(Age: Double(userAge), Gender: Double(genderToML), Sleep_duration: sleepGoalToML, REM_sleep_percentage: rem_Sleep, Deep_sleep_percentage: deep_Sleep, Awakenings: sleep_Awakenings, Caffeine_consumption:100, Alcohol_consumption: totalAlcoholValue, Smoking_status: smoking_Status, Exercise_frequency: Double(exerciseFrequency), Bedtime_Hour: Double(userSleepBedTimeHour), Bedtime_Minutes: Double(userSleepBedTimeMinute))
+            let prediction = try model.prediction(Age: Double(userAge), Gender: Double(genderToML), Sleep_duration: sleepGoalToML, REM_sleep_percentage: rem_Sleep, Deep_sleep_percentage: deep_Sleep, Awakenings: sleep_Awakenings, Caffeine_consumption:totalCaffeineValue, Alcohol_consumption: totalAlcoholValue, Smoking_status: smoking_Status, Exercise_frequency: Double(exerciseFrequency), Bedtime_Hour: Double(userSleepBedTimeHour), Bedtime_Minutes: Double(userSleepBedTimeMinute))
             print("Prediction: \(prediction.Sleep_efficiency)")
             sleepEfficiency = prediction.Sleep_efficiency
+            sleepEfficiency = round(sleepEfficiency * 100) / 100.0
+            sleepEfficiency = sleepEfficiency * 100
         }
         catch{fatalError("Model failed to load")}
     }
 }
-
-
-//#Preview {
-//    HealthView()
-//}
-
 
 
 

@@ -33,6 +33,6 @@ struct MoodView: View {
     }
 }
 
-//#Preview {
-//    MoodView(chosenMood: Binding<String>.constant(""))
-//}
+#Preview {
+    MoodView(chosenMood: Binding<String>.constant(""))
+}

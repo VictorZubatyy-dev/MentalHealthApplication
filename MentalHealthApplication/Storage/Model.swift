@@ -7,6 +7,8 @@
 import Foundation
 import SwiftData
 import HealthKit
+import SwiftUI
+import JournalingSuggestions
 
 enum CaffeineCoffeeTypeAmount: String, Identifiable, CaseIterable, Codable{
     case Small, Medium, Large
@@ -103,22 +105,39 @@ class Alcohol{
 }
 
 @Model
+class Songs{
+    let songID = UUID()
+    var songName: String
+    var songAlbumName: String
+    var songArtistName: String
+    var songDateListened: Date
+    
+    init(songName: String, songAlbumName: String, songArtistName: String, songDateListened: Date) {
+        self.songName = songName
+        self.songAlbumName = songAlbumName
+        self.songArtistName = songArtistName
+        self.songDateListened = songDateListened
+    }
+}
+
+@Model
 class Log{
     var date: Date
     var entry: String
+    var title: String
     var feeling: String
-    var exercise: Double
     var mood: String
+    var song: [Songs]
     var alcohol: Alcohol
     var caffeine: Caffeine
-    @Attribute(.externalStorage) var photo: Data?
     
-    init(date: Date, entry: String, feeling: String, exercise: Double, mood: String, alcohol: Alcohol, caffeine: Caffeine) {
+    init(date: Date, entry: String, title: String, feeling: String, mood: String, song: [Songs], alcohol: Alcohol, caffeine: Caffeine) {
         self.date = date
         self.entry = entry
+        self.title = title
         self.feeling = feeling
-        self.exercise = exercise
         self.mood = mood
+        self.song = song
         self.alcohol = alcohol
         self.caffeine = caffeine
     }
@@ -126,8 +145,6 @@ class Log{
 
 extension Log {
     /// A filter that checks for logs with the chosen date.
-    ///
-//    /need a bool for chosen mood
     static func predicate(
         allEntries: Bool,
         searchDate: Date,
@@ -163,7 +180,5 @@ extension Log {
                 (!log.entry.isEmpty)
             }
         }
-        
-        
     }
 }

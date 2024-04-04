@@ -18,28 +18,25 @@ struct OnboardingUserScreen: View {
     var body: some View {
         VStack(alignment: .leading){
             Text("User Setup").font(.largeTitle).bold().padding()
-                Form {
-                    Section(header: Text("Personal Details")) {
-                        TextField(text: $userName, prompt: Text("Name")) {
-                            Text("Name")
-                        }
-                        List {
-                            Picker("Age", selection: $userAge) {
-                                ForEach(age, id: \.self){
-                                    Text("\($0)").tag($0)
-                                }
+            Form {
+                Section(header: Text("Personal Details")) {
+                    TextField(text: $userName, prompt: Text("Name")) {
+                        Text("Name")
+                    }
+                    List {
+                        Picker("Age", selection: $userAge) {
+                            ForEach(age, id: \.self){
+                                Text("\($0)").tag($0)
                             }
                         }
-                        List {
-                            Picker("Gender", selection: $userGender) {
-                                Text("Male").tag("Male")
-                                Text("Female").tag("Female")
-                            }}
                     }
+                    List {
+                        Picker("Gender", selection: $userGender) {
+                            Text("Male").tag("Male")
+                            Text("Female").tag("Female")
+                        }}
                 }
-            }.background(Color.ListBGColor)
-        }
+            }
+        }.background(Color.ListBGColor)
     }
-
-
-
+}

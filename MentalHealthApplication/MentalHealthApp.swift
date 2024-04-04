@@ -12,7 +12,7 @@ import SwiftData
 @main
 struct MentalHealthApplicati4onApp: App {
     let modelContainer: ModelContainer
-
+    
     init() {
         do {
             modelContainer = try ModelContainer(for: Log.self, Alcohol.self)

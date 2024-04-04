@@ -14,28 +14,22 @@ struct OnboardingHealthScreen: View {
     @State private var selectedValue: Int = 0
     let numbers: [Int] = stride(from: 5, through: 90, by: 5).map { $0 }
     
-// State variables to keep track of the selected hour and minute
+    /// State variables to keep track of the selected hour and minute
     @State private var selectedHour: Int = 0
     @State private var selectedMinute: Int = 0
     
-// Arrays to hold the hours and minutes options
-//  Max 20 hours
+    /// Arrays to hold the hours and minutes options for sleep
     let hours = Array(5...10)
-//  Max 60 mins
     let minutes: [Int] = stride(from: 0, through: 30, by: 30).map { $0 }
     
-// Arrays to hold the hours and minutes options for bedtime
-//  Max 20 hours
-    let hoursBedTime = Array(5...10)
-//    21:00
-//  Max 60 mins
+    ///    Arrays to hold the hours and minutes options for bedtime
+    ///    21:00 to 2:30 bedtime hours/minutes
+    let hoursBedTime: [Int] = [21,22,23,0,1,2]
     let minutesBedTime: [Int] = stride(from: 0, through: 30, by: 30).map { $0 }
-//    2:30
-
+    
     @AppStorage("userSmokingStatus") private var userSmokingStatus = ""
     @AppStorage("userAwakenings") private var userAwakenings = 0
     @AppStorage("exerciseFrequency") private var exerciseFrequency = 0
-    @AppStorage("userExerciseGoal") private var userExerciseGoal = 0
     @AppStorage("userSleepGoalHour") private var userSleepGoalHour = 0
     @AppStorage("userSleepGoalMinute") private var userSleepGoalMinute = 0
     @AppStorage("userSleepBedTimeHour") private var userSleepBedTimeHour = 0
@@ -68,17 +62,9 @@ struct OnboardingHealthScreen: View {
                         }
                     }
                     
-                    List {
-                        Picker("Exercise goal", selection:  $userExerciseGoal) {
-                            ForEach(numbers, id: \.self) { number in
-                                Text("\(number) min").tag(number)
-                            }
-                        }
-                    }
-                    
                     HStack(alignment: .center, spacing: 0) {
                         Text("Sleep Goal")
-                        // Picker for hours
+                        // Picker for sleep goal hours
                         Picker("Hours", selection: $userSleepGoalHour) {
                             ForEach(hours, id: \.self) { hour in
                                 Text("\(hour) hr").tag(hour)
@@ -88,7 +74,7 @@ struct OnboardingHealthScreen: View {
                         .frame(width: 125, alignment: .center)
                         .clipped()
                         
-                        // Picker for minutes
+                        // Picker for sleep goal minutes
                         Picker("Minutes", selection: $userSleepGoalMinute) {
                             ForEach(minutes, id: \.self) { minute in
                                 Text("\(minute) min").tag(minute)
@@ -104,7 +90,7 @@ struct OnboardingHealthScreen: View {
                     
                     HStack(alignment: .center, spacing: 0) {
                         Text("Bedtime Goal")
-                        // Picker for hours
+                        // Picker for bedtime hours
                         Picker("Hours", selection: $userSleepBedTimeHour) {
                             ForEach(hoursBedTime, id: \.self) { hour in
                                 Text("\(hour) hr").tag(hour)
@@ -114,7 +100,7 @@ struct OnboardingHealthScreen: View {
                         .frame(width: 125, alignment: .center)
                         .clipped()
                         
-                        // Picker for minutes
+                        // Picker for bedtime minutes
                         Picker("Minutes", selection: $userSleepBedTimeMinute) {
                             ForEach(minutesBedTime, id: \.self) { minute in
                                 Text("\(minute) min").tag(minute)
@@ -132,7 +118,3 @@ struct OnboardingHealthScreen: View {
         }.background(Color.ListBGColor)
     }
 }
-
-//#Preview {
-//    OnboardingHealthScreen()
-//}

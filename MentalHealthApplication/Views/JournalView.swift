@@ -19,27 +19,23 @@ extension View {
     }
 }
 
-
 struct JournalView: View {
     @Environment(\.modelContext) var modelContext
     @AppStorage("userCreated") private var userCreated = ""
     @AppStorage("userName") private var userName = ""
     @State private var selectedEmoji = ""
     @State private var path = [Log]()
-//    @State private var sortOrder = SortDescriptor(\Log.entry)
     @State private var datePicked = false
     
-    //    Background colour
+    ///Background colour
     let gradient = ColorPallete()
     @State private var logDate = Date()
-//    @State var chosenMood: Mood = .none
     @State var chosenMood = "none"
     @State private var allEntries = true
     @State private var showingDateSheet = false
     @State private var showingMoodSheet = false
     @State private var selectedFilter = ""
     
- 
     var body: some View {
         NavigationStack(path: $path){
             LogView(allEntries: allEntries, searchDate: logDate, chosenMood: chosenMood)
@@ -80,22 +76,17 @@ struct JournalView: View {
                     }
                     }
                 }
-            
         }
     }
     
     func addEntry(){
-        //        Initialise objects
-
+        ///Initialise objects
         let caffeine = Caffeine(caffeineType: CaffeineType.none, caffeineTeaType: CaffeineTeaType.black, caffeineCoffeeType: CaffeineCoffeeType.Americano, caffeineTeaTypeAmount: CaffeineTeaTypeAmount.Cup, caffeineCoffeeTypeAmount: CaffeineCoffeeTypeAmount.Small, caffeineBeverageTypeAmountValue: 0.0)
         let alcohol = Alcohol(alcoholType: AlcoholType.none, alcoholSpiritType: AlcoholSpiritType.Whiskey, alcoholWineType: AlcoholWineType.Red, alcoholSpiritTypeAmount: AlcoholSpiritTypeAmount.Jigger, alcoholWineTypeAmount: AlcoholWineTypeAmount.Glass, alcoholBeverageTypeAmountValue: 0.0)
-        let log = Log(date: Date(), entry: "", feeling: "", exercise: 0.0, mood: "none", alcohol: alcohol, caffeine: caffeine)
+        let songs = Songs(songName: "", songAlbumName: "", songArtistName: "", songDateListened: Date())
+        let log = Log(date: Date(), entry: "", title: "", feeling: "", mood: "none", song: [songs], alcohol: alcohol, caffeine: caffeine)
         modelContext.insert(log)
         path.append(log)
     }
 }
-
-//#Preview {
-//    JournalView(chosenMood: "")
-//}
 
