@@ -8,19 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		1C05D5D82B6BE2640095A352 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C05D5D72B6BE2640095A352 /* EditUserView.swift */; };
+		1C1394472BB871EA0018C8C7 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1394462BB871EA0018C8C7 /* ColorPallete.swift */; };
+		1C13944A2BB872410018C8C7 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1394492BB872410018C8C7 /* DateFormatter.swift */; };
+		1C1394522BBC49F70018C8C7 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1C1394512BBC49F70018C8C7 /* ConfettiSwiftUI */; };
+		1C263CC42BA099F50019EE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C263CC32BA099F50019EE08 /* Assets.xcassets */; };
+		1C3D64F32BC30C5700EF7469 /* MoodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */; };
 		1C471E292B7D5F4800222F7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C471E282B7D5F4800222F7A /* ContentView.swift */; };
 		1C91CE622B1CC101003FF404 /* MentalHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */; };
-		1C91CE662B1CC103003FF404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C91CE652B1CC103003FF404 /* Assets.xcassets */; };
 		1C91CE692B1CC103003FF404 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C91CE682B1CC103003FF404 /* Preview Assets.xcassets */; };
 		1C91CE742B1CCA54003FF404 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE732B1CCA54003FF404 /* Model.swift */; };
 		1C91CE7A2B1CCE12003FF404 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE792B1CCE12003FF404 /* SettingsView.swift */; };
 		1C91CE7C2B1CCE1B003FF404 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE7B2B1CCE1B003FF404 /* HealthView.swift */; };
 		1C91CE802B1CD683003FF404 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */; };
-		1C91CE852B1D1445003FF404 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE842B1D1445003FF404 /* HealthManager.swift */; };
 		1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE862B1D3D0A003FF404 /* JournalView.swift */; };
-		1CA21E7C2B783D3E0003D5E2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA21E7B2B783D3E0003D5E2 /* User.swift */; };
+		1C962D522B95092D00DFE2A9 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C962D512B95092D00DFE2A9 /* LogView.swift */; };
+		1CC94BCD2BA0B9C8008C356E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC94BCC2BA0B9C8008C356E /* CalendarView.swift */; };
+		1CC94BD12BA317B1008C356E /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC94BD02BA317B1008C356E /* MoodView.swift */; };
+		1CE7D7552B993AFA00FACFC8 /* SleepInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7D7542B993AFA00FACFC8 /* SleepInfoView.swift */; };
 		1CF4DB0C2B1E4F1900478402 /* SleepEfficiency.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */; };
-		1CF55C242B71239B00CA8A03 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF55C232B71239B00CA8A03 /* Constants.swift */; };
 		1CF55C262B7124FE00CA8A03 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF55C252B7124FE00CA8A03 /* OnboardingScreen.swift */; };
 		1CF55C282B71264B00CA8A03 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF55C272B71264B00CA8A03 /* OnboardingView.swift */; };
 		1CF55C2A2B71627A00CA8A03 /* OnboardingHealthScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF55C292B71627A00CA8A03 /* OnboardingHealthScreen.swift */; };
@@ -28,21 +33,26 @@
 
 /* Begin PBXFileReference section */
 		1C05D5D72B6BE2640095A352 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
+		1C1394462BB871EA0018C8C7 /* ColorPallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
+		1C1394492BB872410018C8C7 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		1C1E82DE2BB5B1570019BDBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1C263CC32BA099F50019EE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInfoView.swift; sourceTree = "<group>"; };
 		1C471E282B7D5F4800222F7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C91CE5E2B1CC101003FF404 /* MentalHealthApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalHealthApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalHealthApp.swift; sourceTree = "<group>"; };
-		1C91CE652B1CC103003FF404 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C91CE682B1CC103003FF404 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1C91CE732B1CCA54003FF404 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1C91CE792B1CCE12003FF404 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1C91CE7B2B1CCE1B003FF404 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
 		1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MentalHealthApplication.entitlements; sourceTree = "<group>"; };
-		1C91CE842B1D1445003FF404 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		1C91CE862B1D3D0A003FF404 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
-		1CA21E7B2B783D3E0003D5E2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1C962D512B95092D00DFE2A9 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		1CC94BCC2BA0B9C8008C356E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		1CC94BD02BA317B1008C356E /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
+		1CE7D7542B993AFA00FACFC8 /* SleepInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepInfoView.swift; sourceTree = "<group>"; };
 		1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = SleepEfficiency.mlpackage; sourceTree = "<group>"; };
-		1CF55C232B71239B00CA8A03 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1CF55C252B7124FE00CA8A03 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		1CF55C272B71264B00CA8A03 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1CF55C292B71627A00CA8A03 /* OnboardingHealthScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHealthScreen.swift; sourceTree = "<group>"; };
@@ -53,12 +63,66 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C1394522BBC49F70018C8C7 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1394482BB871F50018C8C7 /* Colours */ = {
+			isa = PBXGroup;
+			children = (
+				1C1394462BB871EA0018C8C7 /* ColorPallete.swift */,
+			);
+			path = Colours;
+			sourceTree = "<group>";
+		};
+		1C13944B2BB8724D0018C8C7 /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				1C1394492BB872410018C8C7 /* DateFormatter.swift */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
+		1C13946D2BBEF4B80018C8C7 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1C91CE732B1CCA54003FF404 /* Model.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		1C833A7B2B7E47A5000DB8BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1C471E282B7D5F4800222F7A /* ContentView.swift */,
+				1CF55C252B7124FE00CA8A03 /* OnboardingScreen.swift */,
+				1CF55C272B71264B00CA8A03 /* OnboardingView.swift */,
+				1CF55C292B71627A00CA8A03 /* OnboardingHealthScreen.swift */,
+				1C91CE862B1D3D0A003FF404 /* JournalView.swift */,
+				1C962D512B95092D00DFE2A9 /* LogView.swift */,
+				1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */,
+				1C05D5D72B6BE2640095A352 /* EditUserView.swift */,
+				1C91CE7B2B1CCE1B003FF404 /* HealthView.swift */,
+				1C91CE792B1CCE12003FF404 /* SettingsView.swift */,
+				1CE7D7542B993AFA00FACFC8 /* SleepInfoView.swift */,
+				1CC94BCC2BA0B9C8008C356E /* CalendarView.swift */,
+				1CC94BD02BA317B1008C356E /* MoodView.swift */,
+				1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1C833A7D2B7E4828000DB8BD /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */,
+			);
+			path = ML;
+			sourceTree = "<group>";
+		};
 		1C91CE552B1CC101003FF404 = {
 			isa = PBXGroup;
 			children = (
@@ -78,23 +142,15 @@
 		1C91CE602B1CC101003FF404 /* MentalHealthApplication */ = {
 			isa = PBXGroup;
 			children = (
-				1CF55C252B7124FE00CA8A03 /* OnboardingScreen.swift */,
-				1CF55C232B71239B00CA8A03 /* Constants.swift */,
-				1CF4DB0B2B1E4F1900478402 /* SleepEfficiency.mlpackage */,
-				1C91CE862B1D3D0A003FF404 /* JournalView.swift */,
-				1C91CE842B1D1445003FF404 /* HealthManager.swift */,
-				1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */,
-				1C91CE7F2B1CD683003FF404 /* EditEntryView.swift */,
-				1C05D5D72B6BE2640095A352 /* EditUserView.swift */,
-				1C91CE7B2B1CCE1B003FF404 /* HealthView.swift */,
-				1C91CE792B1CCE12003FF404 /* SettingsView.swift */,
-				1C91CE732B1CCA54003FF404 /* Model.swift */,
+				1C833A7D2B7E4828000DB8BD /* ML */,
+				1C13946D2BBEF4B80018C8C7 /* Storage */,
+				1C1E82DE2BB5B1570019BDBA /* Info.plist */,
+				1C833A7B2B7E47A5000DB8BD /* Views */,
 				1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */,
-				1CF55C272B71264B00CA8A03 /* OnboardingView.swift */,
-				1CF55C292B71627A00CA8A03 /* OnboardingHealthScreen.swift */,
-				1CA21E7B2B783D3E0003D5E2 /* User.swift */,
-				1C471E282B7D5F4800222F7A /* ContentView.swift */,
-				1C91CE652B1CC103003FF404 /* Assets.xcassets */,
+				1C91CE812B1CECAE003FF404 /* MentalHealthApplication.entitlements */,
+				1C263CC32BA099F50019EE08 /* Assets.xcassets */,
+				1C1394482BB871F50018C8C7 /* Colours */,
+				1C13944B2BB8724D0018C8C7 /* DateFormatter */,
 				1C91CE672B1CC103003FF404 /* Preview Content */,
 			);
 			path = MentalHealthApplication;
@@ -124,6 +180,9 @@
 			dependencies = (
 			);
 			name = MentalHealthApplication;
+			packageProductDependencies = (
+				1C1394512BBC49F70018C8C7 /* ConfettiSwiftUI */,
+			);
 			productName = MentalHealthApplication;
 			productReference = 1C91CE5E2B1CC101003FF404 /* MentalHealthApplication.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +211,9 @@
 				Base,
 			);
 			mainGroup = 1C91CE552B1CC101003FF404;
+			packageReferences = (
+				1C1394502BBC49F70018C8C7 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+			);
 			productRefGroup = 1C91CE5F2B1CC101003FF404 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -167,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C91CE692B1CC103003FF404 /* Preview Assets.xcassets in Resources */,
-				1C91CE662B1CC103003FF404 /* Assets.xcassets in Resources */,
+				1C263CC42BA099F50019EE08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,20 +241,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CF55C2A2B71627A00CA8A03 /* OnboardingHealthScreen.swift in Sources */,
+				1C3D64F32BC30C5700EF7469 /* MoodInfoView.swift in Sources */,
 				1CF4DB0C2B1E4F1900478402 /* SleepEfficiency.mlpackage in Sources */,
+				1C1394472BB871EA0018C8C7 /* ColorPallete.swift in Sources */,
 				1C91CE7A2B1CCE12003FF404 /* SettingsView.swift in Sources */,
-				1CA21E7C2B783D3E0003D5E2 /* User.swift in Sources */,
+				1C13944A2BB872410018C8C7 /* DateFormatter.swift in Sources */,
+				1CC94BD12BA317B1008C356E /* MoodView.swift in Sources */,
 				1CF55C282B71264B00CA8A03 /* OnboardingView.swift in Sources */,
 				1C91CE872B1D3D0A003FF404 /* JournalView.swift in Sources */,
 				1C91CE622B1CC101003FF404 /* MentalHealthApp.swift in Sources */,
+				1C962D522B95092D00DFE2A9 /* LogView.swift in Sources */,
 				1C91CE7C2B1CCE1B003FF404 /* HealthView.swift in Sources */,
-				1CF55C242B71239B00CA8A03 /* Constants.swift in Sources */,
 				1C91CE742B1CCA54003FF404 /* Model.swift in Sources */,
+				1CE7D7552B993AFA00FACFC8 /* SleepInfoView.swift in Sources */,
 				1C91CE802B1CD683003FF404 /* EditEntryView.swift in Sources */,
+				1CC94BCD2BA0B9C8008C356E /* CalendarView.swift in Sources */,
 				1C471E292B7D5F4800222F7A /* ContentView.swift in Sources */,
 				1CF55C262B7124FE00CA8A03 /* OnboardingScreen.swift in Sources */,
 				1C05D5D82B6BE2640095A352 /* EditUserView.swift in Sources */,
-				1C91CE852B1D1445003FF404 /* HealthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +317,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -308,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -326,10 +392,13 @@
 				CODE_SIGN_ENTITLEMENTS = MentalHealthApplication/MentalHealthApplication.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MentalHealthApplication/Preview Content\"";
-				DEVELOPMENT_TEAM = VMW2VPTDPN;
+				DEVELOPMENT_ASSET_PATHS = "MentalHealthApplication/Preview\\ Content";
+				DEVELOPMENT_TEAM = NVN9P24Y7P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MentalHealthApplication/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = mentjour.;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This data will be used to display and calculate health related data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This data will be used to write health related data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -337,6 +406,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,10 +428,13 @@
 				CODE_SIGN_ENTITLEMENTS = MentalHealthApplication/MentalHealthApplication.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MentalHealthApplication/Preview Content\"";
-				DEVELOPMENT_TEAM = VMW2VPTDPN;
+				DEVELOPMENT_ASSET_PATHS = "MentalHealthApplication/Preview\\ Content";
+				DEVELOPMENT_TEAM = NVN9P24Y7P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MentalHealthApplication/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = mentjour.;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This data will be used to display and calculate health related data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This data will be used to write health related data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -369,6 +442,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -404,6 +478,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C1394502BBC49F70018C8C7 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C1394512BBC49F70018C8C7 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C1394502BBC49F70018C8C7 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C91CE562B1CC101003FF404 /* Project object */;
 }

@@ -13,36 +13,24 @@ extension Color {
 
 struct OnboardingView: View {
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var userDetails: Users
+    @AppStorage("userCreated") private var userCreated = ""
+    @AppStorage("userName") private var userName = ""
+    
     @State private var selectedView = 1
     let maxNumberOfScreens = 2
-
-    @AppStorage(Constants.currentOnboardingVersion) private var hasSeenOnboardingView = false
     
     var body: some View {
         VStack (alignment: .center){
             TabView(selection: $selectedView) {
-                if (userDetails.user.isEmpty){
-                    OnboardingUserScreen().tag(1)
-                    OnboardingHealthScreen().tag(2)
-                }
-                
-                else{
-                    OnboardingUserScreen().tag(1)
-                    OnboardingHealthScreen().tag(2)
-                }
-                
+                OnboardingUserScreen().tag(1)
+                OnboardingHealthScreen().tag(2)
             }
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
             
-            Button(action: deleteUser){
-                Text("delete user")
-            }
-            
             Button(selectedView == maxNumberOfScreens ? "Done" : "Next") {
                 if selectedView == maxNumberOfScreens {
-                    hasSeenOnboardingView = true
+                    userCreated = "user"
                 } else {
                     selectedView += 1
                 }
@@ -52,16 +40,4 @@ struct OnboardingView: View {
         }.background(Color.ListBGColor)
             .ignoresSafeArea(.all)
     }
-    
-    func deleteUser(){
-        do {
-            try modelContext.delete(model: User.self)
-        } catch {
-            print("Failed to clear all Country and City data.")
-        }
-    }
 }
-
-//#Preview {
-//    OnboardingView()
-//}

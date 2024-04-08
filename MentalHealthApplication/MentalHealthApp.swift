@@ -10,12 +10,12 @@ import HealthKit
 import SwiftData
 
 @main
-struct MentalHealthApplicationApp: App {
+struct MentalHealthApplicati4onApp: App {
     let modelContainer: ModelContainer
     
     init() {
         do {
-            modelContainer = try ModelContainer(for: Log.self, User.self)
+            modelContainer = try ModelContainer(for: Log.self, Alcohol.self)
         } catch {
             fatalError("Could not initialize ModelContainer")
         }
