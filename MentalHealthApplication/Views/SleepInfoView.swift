@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct SheetView: View {
+struct SleepInfoView: View {
     @Environment(\.dismiss) var dismiss
     
+    //colours used for the view
     let darkGray = Color(white: 0.1500)
     let lightGray = Color(white: 0.2000)
     
@@ -110,5 +111,5 @@ struct SheetView: View {
 }
 
 #Preview {
-    SheetView()
+    SleepInfoView()
 }

@@ -14,6 +14,7 @@ import Charts
 import ConfettiSwiftUI
 
 struct HealthView: View {
+    /// model context is used for the calculation of total caffeine and alcohol
     @Environment(\.modelContext) var modelContext
     /// track the total alcohol, caffeine user has consumed for the day
     @State private var totalAlcoholValue = 0.0
@@ -25,6 +26,7 @@ struct HealthView: View {
     let gradient = ColorPallete()
     @State private var moodColour = LinearGradient.init(colors: [Color.purple], startPoint: UnitPoint(x: 0.0, y: 0.0), endPoint: UnitPoint(x: 0.0, y: 0.0))
     
+    /// user defaults used for the ML model
     @AppStorage("userName") private var userName = ""
     @AppStorage("userAge") private var userAge = 0
     @AppStorage("userGender") private var userGender = ""
@@ -36,15 +38,13 @@ struct HealthView: View {
     @AppStorage("userSleepBedTimeHour") private var userSleepBedTimeHour = 0
     @AppStorage("userSleepBedTimeMinute") private var userSleepBedTimeMinute = 0
     
-    @State private var showingSheet = false
+    @State private var showingSleepSheet = false
     @State private var showingMoodSheet = false
 
     @State private var moods: NSSet.Element = ""
     @State private var moodss = ""
     @State private var sharing: HKAuthorizationStatus = HKAuthorizationStatus.notDetermined
     @State private var sharingExerciseTime: HKAuthorizationStatus = HKAuthorizationStatus.notDetermined
-    
-    @Query var logs: [Log]
     
     @State private var set = NSMutableSet()
     
@@ -67,9 +67,9 @@ struct HealthView: View {
     /// Past 7 days calories and exercise struct state
     @State private var calories: [Calories] = []
     @State private var exercise: [Exercise] = []
+    /// Past 7 days calories and exercise values in string format
     @State private var exerciseDate: [String] = []
     @State private var calorieDate: [String] = []
-    
     
     ///    Todays exercise goals
     @State private var todaysExercise: Double = 0.0
@@ -85,6 +85,7 @@ struct HealthView: View {
     ///    Past week days
     @State private var pastWeek: [String] = []
     
+    // counter used for the confetti when goals are achieved
     @State private var goalsAchieved: Int = 0
     
     var body: some View {
@@ -122,13 +123,13 @@ struct HealthView: View {
                         }
                         Image(systemName: "bed.double.fill")
                         Button {
-                            showingSheet.toggle()
+                            showingSleepSheet.toggle()
                         } label: {
                             Image(systemName: "info.circle")
                                 .foregroundStyle(.white)
                         }
-                        .sheet(isPresented: $showingSheet) {
-                            SheetView()
+                        .sheet(isPresented: $showingSleepSheet) {
+                            SleepInfoView()
                         }
                     }
                     .padding()
@@ -338,7 +339,7 @@ struct HealthView: View {
         var totalCaffeineFetchValue = 0.0
         var mood: [String] = []
         
-        ///     clear all fetch values during load
+        //clear all fetch values during load
         totalAlcoholValue = 0.0
         totalCaffeineValue = 0.0
         mood.removeAll()
@@ -562,7 +563,7 @@ struct HealthView: View {
     
     
     func getModel(){
-        //converting string values to their corresponding double values trained in the ML model
+        //ML values
         var genderToML = 0.0
         var sleepHourToML = 0.0
         var sleepMinuteToML = 0.0
@@ -572,38 +573,30 @@ struct HealthView: View {
         var sleep_Awakenings = 0.0
         var smoking_Status = 0.0
         
-        //male = 0, female = 1 in model
+        //male = 0, female = 1
         if userGender == "Male"{
             genderToML = 0.0
         }
         
         else{
-            genderToML = 0.1
+            genderToML = 1.0
         }
         
+        //ensure double variables are correctly formatted for model prediction
         sleepHourToML = Double(userSleepGoalHour)
-        print(sleepHourToML)
         sleepMinuteToML = Double(userSleepGoalMinute)
-        print(sleepMinuteToML)
-        //      ensure double variables are correctly formatted for model prediction
-        if sleepMinuteToML == 30.0{
-            sleepMinuteToML = 0.30
-        }
-        
-        //      sleep goal formatted to double for ML model sleep duration
-        sleepGoalToML = sleepHourToML + sleepMinuteToML
-        print(sleepGoalToML)
-        //      rem sleep calculation
-        rem_Sleep = ((sleepGoalToML * 60) / 25)
-        print(rem_Sleep)
-        
-        //      deep sleep calculation
-        deep_Sleep = ((sleepGoalToML * 60) / 25)
-        print(deep_Sleep)
-        
         sleep_Awakenings = Double(userAwakenings)
+
+        if sleepMinuteToML == 30.0{
+            sleepMinuteToML = 0.5
+        }
+        sleepGoalToML = sleepHourToML + sleepMinuteToML
+        //rem sleep calculation
+        rem_Sleep = ((sleepGoalToML * 60) / 25)
+        //deep sleep calculation
+        deep_Sleep = ((sleepGoalToML * 60) / 25)
         
-        //      smoking status
+        //smoking status conversion to ML format values
         if userSmokingStatus == "Yes"{
             smoking_Status = 0
         }
@@ -614,8 +607,7 @@ struct HealthView: View {
         
         do {
             let model = try SleepEfficiency(configuration: MLModelConfiguration())
-            let prediction = try model.prediction(Age: Double(userAge), Gender: Double(genderToML), Sleep_duration: sleepGoalToML, REM_sleep_percentage: rem_Sleep, Deep_sleep_percentage: deep_Sleep, Awakenings: sleep_Awakenings, Caffeine_consumption:totalCaffeineValue, Alcohol_consumption: totalAlcoholValue, Smoking_status: smoking_Status, Exercise_frequency: Double(exerciseFrequency), Bedtime_Hour: Double(userSleepBedTimeHour), Bedtime_Minutes: Double(userSleepBedTimeMinute))
-            print("Prediction: \(prediction.Sleep_efficiency)")
+            let prediction = try model.prediction(Age: Double(userAge), Gender: Double(genderToML), Sleep_duration: sleepGoalToML, REM_sleep_percentage: rem_Sleep, Deep_sleep_percentage: deep_Sleep, Awakenings: sleep_Awakenings, Caffeine_consumption:totalCaffeineValue >= 200 ? 200 : totalCaffeineValue, Alcohol_consumption: totalAlcoholValue >= 5 ? 5: totalAlcoholValue, Smoking_status: smoking_Status, Exercise_frequency: Double(exerciseFrequency), Bedtime_Hour: Double(userSleepBedTimeHour), Bedtime_Minutes: Double(userSleepBedTimeMinute))
             sleepEfficiency = prediction.Sleep_efficiency
             sleepEfficiency = round(sleepEfficiency * 100) / 100.0
             sleepEfficiency = sleepEfficiency * 100

@@ -10,9 +10,11 @@ import SwiftUI
 struct MoodInfoView: View {
     @Environment(\.dismiss) var dismiss
     
+    //colours used for the view
     let darkGray = Color(white: 0.1500)
     let lightGray = Color(white: 0.2000)
     
+    //colours used to represent the different moods
     let gradient = ColorPallete()
     
     var body: some View {
