@@ -37,7 +37,8 @@ struct HealthView: View {
     @AppStorage("userSleepBedTimeMinute") private var userSleepBedTimeMinute = 0
     
     @State private var showingSheet = false
-    
+    @State private var showingMoodSheet = false
+
     @State private var moods: NSSet.Element = ""
     @State private var moodss = ""
     @State private var sharing: HKAuthorizationStatus = HKAuthorizationStatus.notDetermined
@@ -91,6 +92,7 @@ struct HealthView: View {
             gradient.backgroundGradient
                 .ignoresSafeArea()
             VStack(alignment: .leading){
+                Spacer().frame(height: 30)
                 Text("Health").font(.largeTitle).bold()
                     .padding()
                 HStack(alignment: .firstTextBaseline) {
@@ -125,7 +127,6 @@ struct HealthView: View {
                             Image(systemName: "info.circle")
                                 .foregroundStyle(.white)
                         }
-                        
                         .sheet(isPresented: $showingSheet) {
                             SheetView()
                         }
@@ -149,13 +150,13 @@ struct HealthView: View {
                         Image(systemName: "person.fill")
                         
                         Button {
-                            showingSheet.toggle()
+                            showingMoodSheet.toggle()
                         } label: {
                             Image(systemName: "info.circle")
                                 .foregroundStyle(.white)
                         }
-                        .sheet(isPresented: $showingSheet) {
-                            SheetView()
+                        .sheet(isPresented: $showingMoodSheet) {
+                            MoodInfoView()
                         }
                     }
                     .padding()
@@ -177,8 +178,14 @@ struct HealthView: View {
                             HStack(alignment: .firstTextBaseline) {
                                 VStack(alignment: .leading){
                                     Text("Exercise").font(.title2)
-                                    Text("\(Int(todaysExercise))/" + "\(exerciseGoal)").font(.title).bold()
-                                        .fixedSize(horizontal: false, vertical: true)
+                                    if exerciseGoal.doubleValue(for: HKUnit.minute()) == 0.0{
+                                        Text("--/--").font(.title).bold()
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                    else{
+                                        Text("\(Int(todaysExercise))/" + "\(exerciseGoal)").font(.title).bold()
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    }
                                 }
                                 Image(systemName: "figure.run")
                                     .imageScale(.small)
@@ -197,8 +204,14 @@ struct HealthView: View {
                             HStack(alignment: .firstTextBaseline){
                                 VStack(alignment: .leading){
                                     Text("Calories").font(.title2)
-                                    Text("\(Int(todaysCalories))/" + "\(todaysCalorieGoal)").font(todaysCaloriesGoal > 1000 ? .title2 : .title).bold()
-                                        .fixedSize(horizontal: false, vertical: true)
+                                    if todaysCalorieGoal.doubleValue(for: HKUnit.kilocalorie()) == 0.0{
+                                        Text("--/--").font(.title).bold()
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                    else{
+                                        Text("\(Int(todaysCalories))/" + "\(todaysCalorieGoal)").font(todaysCaloriesGoal > 1000 ? .title2 : .title).bold()
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    }
                                 }
                                 Image(systemName: "fork.knife")
                                     .imageScale(.small)

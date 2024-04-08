@@ -19,6 +19,7 @@ struct EditEntryView: View {
     @State private var suggestionSong = [JournalingSuggestion.Song]()
     
     @State private var showingAlert: Bool = false
+    @State private var logEntryText: String = "Start writing ..."
     
     let gradient = ColorPallete()
     
@@ -26,10 +27,10 @@ struct EditEntryView: View {
     
     var body: some View {
         if log.alcohol.alcoholType.rawValue != "none" || log.caffeine.caffeineType.rawValue != "none"{
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 ZStack(alignment: .topLeading){
                     VStack(alignment: .leading){
-                        Text("Today, \(log.date, formatter: dateFormatter)")
+                        Text("Today, \(log.date, formatter: dateFormatterFullMonthName)")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .alert("You must not exceed more than 2 songs.", isPresented: $showingAlert) {
@@ -46,26 +47,33 @@ struct EditEntryView: View {
                         }
                         .frame(alignment: .trailing)
                         
-                        TextField(showingAlert ? "" : log.title, text:$log.title, axis: .vertical)
-                            .bold().font(.title3)
-                            .lineLimit(2, reservesSpace: true)
-                            .focused($titleEntryIsFocused)
+                        if let album = log.song.first?.songAlbumName{
+                            if album.isEmpty{
+                                EmptyView()
+                            }
+                            else{
+                                TextField(log.title, text:$log.title, axis: .vertical)
+                                    .bold().font(.title3)
+                                    .lineLimit(2, reservesSpace: true)
+                                    .focused($titleEntryIsFocused)
+                            }
+                        }
                         
-                        
-                        if let song = log.song.first?.songAlbumName{
-                            if !song.isEmpty{
+                        if let album = log.song.first?.songAlbumName{
+                            if !album.isEmpty{
                                 VStack(alignment: .leading){
-                                    if log.song.count >= 1 && log.song.count < 3{
                                         ForEach(log.song, id: \.songID){song in
                                             Text(song.songAlbumName + song.songArtistName)
+                                                .foregroundStyle(.white)
                                                 .font(.headline).bold()
                                             Text(song.songName)
+                                                .foregroundStyle(.white)
                                                 .font(.subheadline)
                                         }
-                                    }
                                 }
                                 .padding()
-                                .frame(width: 300, alignment: .leading)
+                                .foregroundStyle(.white)
+                                .frame(maxHeight: .infinity, alignment: .leading)
                                 .background(ZStack{
                                     RoundedRectangle(cornerRadius: 10)
                                         .foregroundStyle(gradient.logSuggestionGradient)
@@ -88,19 +96,21 @@ struct EditEntryView: View {
                         }
                         .frame(alignment: .trailing)
                         
-                        TextField(!suggestionSong.isEmpty
-                                  ? "What were you doing/feeling whilst listening to this music?" : "Start writing...", text:$log.entry, axis: .vertical)
-                        .focused($entryIsFocused)
-                        .textFieldStyle(.roundedBorder)
-                        .lineLimit(4, reservesSpace: true)
+                        
+                        
+                        TextField(logEntryText, text:$log.entry, axis: .vertical)
+                            .focused($entryIsFocused)
+                            .textFieldStyle(.roundedBorder)
+                            .lineLimit(4, reservesSpace: true)
                         
                         HStack{
-                            Spacer().frame(width: 120)
-                            
+                            Spacer()
                             JournalingSuggestionsPicker{
-                                Text("Log Suggestion")
-                                    .font(.subheadline).bold()
+                                Label("Suggestion", systemImage: "wand.and.stars")
                                     .padding(5)
+                                    .font(.subheadline)
+                                    .labelStyle(.titleAndIcon)
+                                    .font(.subheadline).bold()
                                     .foregroundStyle(.white)
                                     .background(ZStack{
                                         RoundedRectangle(cornerRadius: 10)
@@ -114,142 +124,155 @@ struct EditEntryView: View {
                                 log.title = suggestionSongTitle
                             }
                             suggestionSong = await suggestion.content(forType: JournalingSuggestion.Song.self)
-                            
-                            if let suggestionSong = suggestionSong.first?.album{
-                                log.title = log.title + "🎵"
+                            print(suggestionSong.count)
+                            if suggestionSong.count > 2{
+                                showingAlert.toggle()
+                                print(showingAlert)
                             }
-                            addSong()
+                            
+                            else{
+                                if let album = suggestionSong.first?.album{
+                                    if album.isEmpty{
+                                        logEntryText = "Start writing ..."
+                                    }
+                                    else{
+                                        logEntryText = "What were you doing/feeling whilst listening to this music?"
+                                        log.title = log.title + " 🎵"
+                                        addSong()
+                                    }
+                                }
+                            }
                         }
+                            Spacer()
                         }
                         
-                        VStack (alignment: .leading){
-                            Text("How are you feeling?")
-                                .foregroundStyle(.gray)
-                            HStack{
-                                Text("Mood")
-                                    .fontWeight(.semibold)
-                                
-                                Picker("Mood", selection: $log.mood){
-                                    ForEach(mood, id: \.self){ mood in
-                                        Text(mood)
-                                    }
+                        Text("How are you feeling?")
+                            .foregroundStyle(.gray)
+                        HStack{
+                            Text("Mood")
+                                .fontWeight(.semibold)
+                            
+                            Picker("Mood", selection: $log.mood){
+                                ForEach(mood, id: \.self){ mood in
+                                    Text(mood)
                                 }
                             }
-                            Text("What did you drink today?")
-                                .foregroundStyle(.gray)
-                            HStack{
-                                Text("Alcohol")
-                                    .fontWeight(.semibold)
-                                Picker("Alcohol", selection: $log.alcohol.alcoholType){
-                                    ForEach(AlcoholType.allCases){type in
-                                        Text(type.rawValue)
-                                    }
+                        }
+                        Text("What did you drink today?")
+                            .foregroundStyle(.gray)
+                        HStack{
+                            Text("Alcohol")
+                                .fontWeight(.semibold)
+                            Picker("Alcohol", selection: $log.alcohol.alcoholType){
+                                ForEach(AlcoholType.allCases){type in
+                                    Text(type.rawValue)
                                 }
-                                Spacer()
-                                Text("Caffeine")
-                                    .fontWeight(.semibold)
-                                Picker("Caffeine", selection: $log.caffeine.caffeineType){
-                                    ForEach(CaffeineType.allCases){type in
-                                        Text(type.rawValue)
-                                    }
-                                }
-                                
                             }
-                            HStack{
-                                //alcohol type
-                                switch log.alcohol.alcoholType{
-                                case .none:
-                                    EmptyView()
-                                case .🍷:
-                                    Text("Type")
-                                        .fontWeight(.semibold)
-                                    Picker("Alcohol Type", selection: $log.alcohol.alcoholWineType){
-                                        ForEach(AlcoholWineType.allCases){wineType in
-                                            Text(wineType.rawValue)
-                                        }
-                                    }
-                                case.🥃:
-                                    Text("Type")
-                                        .fontWeight(.semibold)
-                                    Picker("Alcohol Type", selection: $log.alcohol.alcoholSpiritType){
-                                        ForEach(AlcoholSpiritType.allCases){spiritType in
-                                            Text(spiritType.rawValue)
-                                        }
+                            Spacer()
+                            Text("Caffeine")
+                                .fontWeight(.semibold)
+                            Picker("Caffeine", selection: $log.caffeine.caffeineType){
+                                ForEach(CaffeineType.allCases){type in
+                                    Text(type.rawValue)
+                                }
+                            }
+                            
+                        }
+                        HStack{
+                            //alcohol type
+                            switch log.alcohol.alcoholType{
+                            case .none:
+                                EmptyView()
+                            case .🍷:
+                                Text("Type")
+                                    .fontWeight(.semibold)
+                                Picker("Alcohol Type", selection: $log.alcohol.alcoholWineType){
+                                    ForEach(AlcoholWineType.allCases){wineType in
+                                        Text(wineType.rawValue)
                                     }
                                 }
-                                
-                                //caffeine type
-                                switch log.caffeine.caffeineType{
-                                case .none:
-                                    EmptyView()
-                                case .tea:
-                                    Spacer()
-                                    Text("Type")
-                                        .fontWeight(.semibold)
-                                    Picker("Tea Type", selection: $log.caffeine.caffeineTeaType){
-                                        ForEach(CaffeineTeaType.allCases){teaType in
-                                            Text(teaType.rawValue)
-                                        }
-                                    }
-                                    
-                                case .coffee:
-                                    Spacer()
-                                    Text("Type")
-                                        .fontWeight(.semibold)
-                                    Picker("Coffee Type", selection: $log.caffeine.caffeineCoffeeType){
-                                        ForEach(CaffeineCoffeeType.allCases){coffeeType in
-                                            Text(coffeeType.rawValue)
-                                        }
+                            case.🥃:
+                                Text("Type")
+                                    .fontWeight(.semibold)
+                                Picker("Alcohol Type", selection: $log.alcohol.alcoholSpiritType){
+                                    ForEach(AlcoholSpiritType.allCases){spiritType in
+                                        Text(spiritType.rawValue)
                                     }
                                 }
                             }
                             
-                            HStack{
-                                switch log.alcohol.alcoholType{
-                                case.none:
-                                    EmptyView()
-                                case .🍷:
-                                    Text("Amount")
-                                        .fontWeight(.semibold)
-                                    Picker("Wine Amount", selection: $log.alcohol.alcoholWineTypeAmount){
-                                        ForEach(AlcoholWineTypeAmount.allCases){wineTypeAmount in
-                                            Text(wineTypeAmount.rawValue)
-                                        }
-                                    }
-                                case .🥃:
-                                    Text("Amount")
-                                        .fontWeight(.semibold)
-                                    Picker("Spirit Amount", selection: $log.alcohol.alcoholSpiritTypeAmount){
-                                        ForEach(AlcoholSpiritTypeAmount.allCases){spiritTypeAmount in
-                                            Text(spiritTypeAmount.rawValue)
-                                        }
+                            //caffeine type
+                            switch log.caffeine.caffeineType{
+                            case .none:
+                                EmptyView()
+                            case .tea:
+                                Spacer()
+                                Text("Type")
+                                    .fontWeight(.semibold)
+                                Picker("Tea Type", selection: $log.caffeine.caffeineTeaType){
+                                    ForEach(CaffeineTeaType.allCases){teaType in
+                                        Text(teaType.rawValue)
                                     }
                                 }
                                 
-                                switch log.caffeine.caffeineType {
-                                case .none:
-                                    EmptyView()
-                                case .tea:
-                                    Spacer()
-                                    Text("Amount")
-                                        .fontWeight(.semibold)
-                                    Picker("Tea Amount", selection: $log.caffeine.caffeineTeaTypeAmount){
-                                        ForEach(CaffeineTeaTypeAmount.allCases){teaTypeAmount in
-                                            Text(teaTypeAmount.rawValue)
-                                        }
-                                    }
-                                case .coffee:
-                                    Spacer()
-                                    Text("Amount")
-                                        .fontWeight(.semibold)
-                                    Picker("Coffee Amount", selection: $log.caffeine.caffeineCoffeeTypeAmount){
-                                        ForEach(CaffeineCoffeeTypeAmount.allCases){coffeeTypeAmount in
-                                            Text(coffeeTypeAmount.rawValue)
-                                        }
+                            case .coffee:
+                                Spacer()
+                                Text("Type")
+                                    .fontWeight(.semibold)
+                                Picker("Coffee Type", selection: $log.caffeine.caffeineCoffeeType){
+                                    ForEach(CaffeineCoffeeType.allCases){coffeeType in
+                                        Text(coffeeType.rawValue)
                                     }
                                 }
                             }
                         }
+                        
+                        HStack{
+                            switch log.alcohol.alcoholType{
+                            case.none:
+                                EmptyView()
+                            case .🍷:
+                                Text("Amount")
+                                    .fontWeight(.semibold)
+                                Picker("Wine Amount", selection: $log.alcohol.alcoholWineTypeAmount){
+                                    ForEach(AlcoholWineTypeAmount.allCases){wineTypeAmount in
+                                        Text(wineTypeAmount.rawValue)
+                                    }
+                                }
+                            case .🥃:
+                                Text("Amount")
+                                    .fontWeight(.semibold)
+                                Picker("Spirit Amount", selection: $log.alcohol.alcoholSpiritTypeAmount){
+                                    ForEach(AlcoholSpiritTypeAmount.allCases){spiritTypeAmount in
+                                        Text(spiritTypeAmount.rawValue)
+                                    }
+                                }
+                            }
+                            
+                            switch log.caffeine.caffeineType {
+                            case .none:
+                                EmptyView()
+                            case .tea:
+                                Spacer()
+                                Text("Amount")
+                                    .fontWeight(.semibold)
+                                Picker("Tea Amount", selection: $log.caffeine.caffeineTeaTypeAmount){
+                                    ForEach(CaffeineTeaTypeAmount.allCases){teaTypeAmount in
+                                        Text(teaTypeAmount.rawValue)
+                                    }
+                                }
+                            case .coffee:
+                                Spacer()
+                                Text("Amount")
+                                    .fontWeight(.semibold)
+                                Picker("Coffee Amount", selection: $log.caffeine.caffeineCoffeeTypeAmount){
+                                    ForEach(CaffeineCoffeeTypeAmount.allCases){coffeeTypeAmount in
+                                        Text(coffeeTypeAmount.rawValue)
+                                    }
+                                }
+                            }
+                        }
+                        Spacer()
                     }
                     .padding()
                     .onChange(of: log.alcohol.alcoholType, setAlcoholAmountDefaultValue)
@@ -259,19 +282,20 @@ struct EditEntryView: View {
                     .onChange(of: log.caffeine.caffeineTeaTypeAmount, setTeaTypeAmountValue)
                     .onChange(of: log.caffeine.caffeineCoffeeTypeAmount, setCoffeeTypeAmountValue)
                 }
+                .frame(maxHeight: .infinity, alignment: .topLeading)
                 .ignoresSafeArea(.keyboard)
+                Spacer()
             }
         }
         else{
             ZStack(alignment: .topLeading){
                 VStack(alignment: .leading){
-                    Text("Today, \(log.date, formatter: dateFormatter)")
+                    Text("Today, \(log.date, formatter: dateFormatterFullMonthName)")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .alert("You must not exceed more than 2 songs.", isPresented: $showingAlert) {
                             Button("Ok", role: .cancel) { }
                         }
-                    
                     HStack{
                         Spacer()
                         titleEntryIsFocused ?
@@ -283,34 +307,39 @@ struct EditEntryView: View {
                     }
                     .frame(alignment: .trailing)
                     
-                    TextField(showingAlert ? "" : log.title, text:$log.title, axis: .vertical)
-                        .bold().font(.title3)
-                        .lineLimit(2, reservesSpace: true)
-                        .focused($titleEntryIsFocused)
+                    if let album = log.song.first?.songAlbumName{
+                        if album.isEmpty{
+                            EmptyView()
+                        }
+                        else{
+                            TextField(log.title, text:$log.title, axis: .vertical)
+                                .bold().font(.title3)
+                                .lineLimit(2, reservesSpace: true)
+                                .focused($titleEntryIsFocused)
+                        }
+                    }
                     
-                    if let song = log.song.first?.songAlbumName{
-                        if !song.isEmpty{
+                    if let album = log.song.first?.songAlbumName{
+                        if !album.isEmpty{
                             VStack(alignment: .leading){
-                                if log.song.count >= 1 && log.song.count < 3{
-                                    ForEach(log.song, id: \.songID){song in
-                                        Text(song.songAlbumName + song.songArtistName)
-                                            .font(.headline).bold()
-                                        Text(song.songName)
-                                            .font(.subheadline)
-                                    }
+                                ForEach(log.song, id: \.songID){song in
+                                    Text(song.songAlbumName + song.songArtistName)
+                                        .foregroundStyle(.white)
+                                        .font(.headline).bold()
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    Text(song.songName)
+                                        .foregroundStyle(.white)
+                                        .font(.subheadline)
+                                        .fixedSize(horizontal: false, vertical: true)
                                 }
                             }
                             .padding()
-                            .frame(width: 300, alignment: .leading)
+                            .frame(maxHeight: .infinity, alignment: .leading)
                             .background(ZStack{
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundStyle(gradient.logSuggestionGradient)
                             })
                         }
-                    }
-                    
-                    else {
-                        EmptyView()
                     }
                     
                     HStack{
@@ -324,19 +353,19 @@ struct EditEntryView: View {
                     }
                     .frame(alignment: .trailing)
                     
-                    TextField(!suggestionSong.isEmpty
-                              ? "What were you doing/feeling whilst listening to this music?" : "Start writing...", text:$log.entry, axis: .vertical)
-                    .focused($entryIsFocused)
-                    .textFieldStyle(.roundedBorder)
-                    .lineLimit(4, reservesSpace: true)
+                    TextField(logEntryText, text:$log.entry, axis: .vertical)
+                        .focused($entryIsFocused)
+                        .textFieldStyle(.roundedBorder)
+                        .lineLimit(4, reservesSpace: true)
                     
                     HStack{
-                        Spacer().frame(width: 120)
-                        
+                        Spacer()
                         JournalingSuggestionsPicker{
-                            Text("Log Suggestion")
-                                .font(.subheadline).bold()
+                            Label("Suggestion", systemImage: "wand.and.stars")
                                 .padding(5)
+                                .font(.subheadline)
+                                .labelStyle(.titleAndIcon)
+                                .font(.subheadline).bold()
                                 .foregroundStyle(.white)
                                 .background(ZStack{
                                     RoundedRectangle(cornerRadius: 10)
@@ -350,12 +379,26 @@ struct EditEntryView: View {
                             log.title = suggestionSongTitle
                         }
                         suggestionSong = await suggestion.content(forType: JournalingSuggestion.Song.self)
-                        
-                        if let suggestionSong = suggestionSong.first?.album{
-                            log.title = log.title + "🎵"
+                        print(suggestionSong.count)
+                        if suggestionSong.count > 2{
+                            showingAlert.toggle()
+                            print(showingAlert)
                         }
-                        addSong()
+                        
+                        else{
+                            if let album = suggestionSong.first?.album{
+                                if album.isEmpty{
+                                    logEntryText = "Start writing ..."
+                                }
+                                else{
+                                    logEntryText = "What were you doing/feeling whilst listening to this music?"
+                                    log.title = log.title + " 🎵"
+                                    addSong()
+                                }
+                            }
+                        }
                     }
+                        Spacer()
                     }
                     Text("How are you feeling?")
                         .foregroundStyle(.gray)
@@ -483,6 +526,7 @@ struct EditEntryView: View {
                             }
                         }
                     }
+                    
                 }
                 .padding()
                 .onChange(of: log.alcohol.alcoholType, setAlcoholAmountDefaultValue)
@@ -491,19 +535,17 @@ struct EditEntryView: View {
                 .onChange(of: log.caffeine.caffeineType, setCaffeineAmountDefaultValue)
                 .onChange(of: log.caffeine.caffeineTeaTypeAmount, setTeaTypeAmountValue)
                 .onChange(of: log.caffeine.caffeineCoffeeTypeAmount, setCoffeeTypeAmountValue)
+                Spacer()
             }
+            .frame(maxHeight: .infinity, alignment: .topLeading)
+            Spacer()
         }
     }
     
     func addSong(){
-        if suggestionSong.count > 3{
-            showingAlert.toggle()
-        }
-        else{
-            log.song.removeAll()
-            for song in suggestionSong{
-                log.song.append(Songs(songName: song.song! + " 🎶", songAlbumName: song.album! + " 💿", songArtistName: " by " + (song.artist ?? ""), songDateListened: song.date ?? Date()))
-            }
+        log.song.removeAll()
+        for song in suggestionSong{
+            log.song.append(Songs(songName: song.song! + " 🎶", songAlbumName: song.album! + " 💿", songArtistName: " by " + (song.artist ?? ""), songDateListened: song.date ?? Date()))
         }
     }
     

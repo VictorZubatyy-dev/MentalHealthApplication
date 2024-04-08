@@ -34,19 +34,19 @@ struct ColorPallete{
         startPoint: .top, endPoint: .bottom)
 
     var verySadMoodGradient = LinearGradient(
-        colors: [.primaryCustomBlue, .blue],
+        colors: [.black, .gray],
         startPoint: .top, endPoint: .bottom)
     
     var sadMoodGradient = LinearGradient(
-        colors: [.blue, .primaryCustomBlue],
+        colors: [.primaryCustomBlue, .blue],
         startPoint: .top, endPoint: .bottom)
     
     var contentMoodGradient = LinearGradient(
-        colors: [.red, .orange],
+        colors: [.indigo, .purple],
         startPoint: .top, endPoint: .bottom)
     
     var happyMoodGradient = LinearGradient(
-        colors: [.green, .mint],
+        colors: [.orange, .yellow],
         startPoint: .top, endPoint: .bottom)
     
     var veryHappyMoodGradient = LinearGradient(

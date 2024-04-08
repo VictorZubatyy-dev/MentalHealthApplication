@@ -15,7 +15,7 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @AppStorage("userCreated") private var userCreated = ""
     @AppStorage("notificationPermission") private var userNotificationPermission = ""
-    
+
     var body: some View {
         if !userCreated.isEmpty {
             TabView{

@@ -22,14 +22,15 @@ struct MoodView: View {
         .font(.body)
         .padding()
         
-        Picker("Mood", selection: $chosenMood){
-            ForEach(mood, id: \.self){ mood in
-                Text(mood)
+        HStack{
+            Text("Mood")
+            Picker("Mood", selection: $chosenMood){
+                ForEach(mood, id: \.self){ mood in
+                    Text(mood)
+                }
             }
         }
-        
         Spacer()
-        Text("Chosen mood \(chosenMood)")
     }
 }
 

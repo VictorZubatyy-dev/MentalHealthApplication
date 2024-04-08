@@ -13,6 +13,12 @@ let dateFormatter: DateFormatter = {
     return formatter
 }()
 
+let dateFormatterFullMonthName: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MMMM d"
+    return formatter
+}()
+
 let dateFormatterWithDay: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateFormat = "EEEE, MMM d"

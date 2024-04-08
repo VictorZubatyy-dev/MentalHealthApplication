@@ -12,6 +12,7 @@ import PhotosUI
 struct LogView: View {
     @Environment(\.modelContext) var modelContext
     @Query var logs: [Log]
+    
     let gradient = ColorPallete()
     @State private var moodColour = LinearGradient.init(colors: [Color.purple], startPoint: UnitPoint(x: 0.0, y: 0.0), endPoint: UnitPoint(x: 0.0, y: 0.0))
     
@@ -56,20 +57,23 @@ struct LogView: View {
                         }
                         
                         Spacer().frame(height:10)
-                        HStack(alignment: .firstTextBaseline){
-                            Text(log.entry)
-                            Text(log.mood != "none" ? log.mood : "").font(.title2)
-                                .frame(height: 5)
+                        if !log.entry.isEmpty || log.mood != "none"{
+                            HStack(alignment: .firstTextBaseline){
+                                Text(log.entry)
+                                Text(log.mood != "none" ? log.mood : "").font(.title2)
+                                    .frame(height: 5)
+                            }
+                            .frame(alignment: .leading)
+                            .padding()
+                            .background(ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(gradient.logSuggestionGradient)
+                            })
+                        }
+                        else {
+                            EmptyView()
                         }
                         
-                        .frame(alignment: .leading)
-                        .padding()
-                        .background(ZStack{
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(log.mood != "none" ? gradient.logSuggestionGradient : LinearGradient(
-                                    colors: [.clear, .clear],
-                                    startPoint: .top, endPoint: .bottom), lineWidth: 3)
-                        })
                         switch log.alcohol.alcoholType{
                         case .none:
                             EmptyView()
@@ -79,22 +83,21 @@ struct LogView: View {
                             HStack{
                                 Text(log.alcohol.alcoholWineTypeAmount.rawValue + " of " + log.alcohol.alcoholWineType.rawValue)
                                 Text(log.alcohol.alcoholType.rawValue)
+                                Text(String(format: "(%.1f oz)", log.alcohol.alcoholBeverageTypeAmountValue))
+                                    .font(.subheadline)
                             }
                             .font(.subheadline)
-                            Text(String(format: "%.2f oz of alcohol", log.alcohol.alcoholBeverageTypeAmountValue))
-                                .font(.subheadline)
                         case .🥃:
                             Spacer().frame(height: 10)
                             Text("Alcohol").bold()
                             HStack{
                                 Text(log.alcohol.alcoholSpiritTypeAmount.rawValue + " of " + log.alcohol.alcoholSpiritType.rawValue)
                                 Text(log.alcohol.alcoholType.rawValue)
+                                Text(String(format: "(%.1f oz)", log.alcohol.alcoholBeverageTypeAmountValue))
+                                    .font(.subheadline)
                             }
                             .font(.subheadline)
-                            Text(String(format: "%.2f oz of alcohol", log.alcohol.alcoholBeverageTypeAmountValue))
-                                .font(.subheadline)
                         }
-                        
                         switch log.caffeine.caffeineType {
                         case .none:
                             EmptyView()
@@ -104,23 +107,23 @@ struct LogView: View {
                             HStack{
                                 Text(log.caffeine.caffeineTeaTypeAmount.rawValue + " of " + log.caffeine.caffeineTeaType.rawValue)
                                 Text(log.caffeine.caffeineType.rawValue)
+                                Text("(\(Int(log.caffeine.caffeineBeverageTypeAmountValue)) mg)")
+                                    .font(.subheadline)
                             }
                             .font(.subheadline)
-                            
-                            Text(String(format: "%.2f mg of caffeine", log.caffeine.caffeineBeverageTypeAmountValue))
-                                .font(.subheadline)
                             
                         case .coffee:
                             Divider()
                             Text("Caffeine").bold()
                             HStack{
-                                Text(log.caffeine.caffeineCoffeeTypeAmount.rawValue + " of " + log.caffeine.caffeineCoffeeType.rawValue)
+                                Text(log.caffeine.caffeineCoffeeTypeAmount.rawValue + " " + log.caffeine.caffeineCoffeeType.rawValue)
                                 Text(log.caffeine.caffeineType.rawValue)
+                                Text("(\(Int(log.caffeine.caffeineBeverageTypeAmountValue)) mg)")
+                                    .font(.subheadline)
                             }
                             .font(.subheadline)
                             
-                            Text("\(log.caffeine.caffeineBeverageTypeAmountValue) mg of caffeine")
-                                .font(.subheadline)
+                            
                         }
                         Divider()
                         Text("\(log.date, formatter: dateFormatter)")
@@ -130,7 +133,6 @@ struct LogView: View {
                 .listRowSpacing(10)
                 .listRowBackground(Color.primaryCustomBlue)
                 .foregroundStyle(.white)
-                
             }
             .onDelete(perform: deleteEntries)
         }
@@ -150,10 +152,10 @@ struct LogView: View {
     init(allEntries: Bool,
          searchDate: Date,
          chosenMood: String) {
-        
+
         let predicate = Log.predicate(allEntries: allEntries, searchDate: searchDate, chosenMood: chosenMood)
         
-        _logs = Query(filter: predicate)
+        _logs = Query(filter: predicate, sort: [SortDescriptor(\Log.date, order: .reverse)])
     }
     
     func getMoodStatus(mood: Mood) -> LinearGradient?{

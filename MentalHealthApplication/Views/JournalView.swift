@@ -42,8 +42,8 @@ struct JournalView: View {
                 .navigationDestination(for: Log.self, destination: EditEntryView.init)
                 .scrollContentBackground(.hidden)
                 .background(gradient.backgroundGradient)
-                .navigationTitle("\(userName) Logs")
                 .navigationBarTitleTextColor(.white)
+                .navigationTitle("\(userName) Logs")
                 .toolbar{
                     ToolbarItemGroup{
                         Button(action: addEntry){
@@ -64,10 +64,10 @@ struct JournalView: View {
                                 showingMoodSheet.toggle()
                             }
                         }
-                        
                     label: {
                         Label("", systemImage: "line.3.horizontal.decrease.circle.fill")
                     }
+                    .tint(.indigo)
                     .sheet(isPresented: $showingDateSheet){
                         CalendarView(logDate: $logDate)
                     }

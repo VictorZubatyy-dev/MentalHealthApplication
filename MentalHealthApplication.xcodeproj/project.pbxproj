@@ -12,6 +12,7 @@
 		1C13944A2BB872410018C8C7 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1394492BB872410018C8C7 /* DateFormatter.swift */; };
 		1C1394522BBC49F70018C8C7 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1C1394512BBC49F70018C8C7 /* ConfettiSwiftUI */; };
 		1C263CC42BA099F50019EE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C263CC32BA099F50019EE08 /* Assets.xcassets */; };
+		1C3D64F32BC30C5700EF7469 /* MoodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */; };
 		1C471E292B7D5F4800222F7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C471E282B7D5F4800222F7A /* ContentView.swift */; };
 		1C91CE622B1CC101003FF404 /* MentalHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */; };
 		1C91CE692B1CC103003FF404 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C91CE682B1CC103003FF404 /* Preview Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		1C1394492BB872410018C8C7 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		1C1E82DE2BB5B1570019BDBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1C263CC32BA099F50019EE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInfoView.swift; sourceTree = "<group>"; };
 		1C471E282B7D5F4800222F7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C91CE5E2B1CC101003FF404 /* MentalHealthApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalHealthApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalHealthApp.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				1CE7D7542B993AFA00FACFC8 /* SheetView.swift */,
 				1CC94BCC2BA0B9C8008C356E /* CalendarView.swift */,
 				1CC94BD02BA317B1008C356E /* MoodView.swift */,
+				1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CF55C2A2B71627A00CA8A03 /* OnboardingHealthScreen.swift in Sources */,
+				1C3D64F32BC30C5700EF7469 /* MoodInfoView.swift in Sources */,
 				1CF4DB0C2B1E4F1900478402 /* SleepEfficiency.mlpackage in Sources */,
 				1C1394472BB871EA0018C8C7 /* ColorPallete.swift in Sources */,
 				1C91CE7A2B1CCE12003FF404 /* SettingsView.swift in Sources */,

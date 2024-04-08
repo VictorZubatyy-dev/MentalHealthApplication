@@ -112,6 +112,7 @@ class Songs{
     var songArtistName: String
     var songDateListened: Date
     
+    
     init(songName: String, songAlbumName: String, songArtistName: String, songDateListened: Date) {
         self.songName = songName
         self.songAlbumName = songAlbumName
