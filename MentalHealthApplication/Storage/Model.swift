@@ -10,6 +10,7 @@ import HealthKit
 import SwiftUI
 import JournalingSuggestions
 
+//custom enums types
 enum CaffeineCoffeeTypeAmount: String, Identifiable, CaseIterable, Codable{
     case Small, Medium, Large
     var id: Self {self}
@@ -65,6 +66,7 @@ enum Mood: String, CaseIterable{
 }
 
 
+//models
 @Model
 class Caffeine
 {
@@ -121,6 +123,7 @@ class Songs{
     }
 }
 
+//main log model stores caffeine, alcohol and songs
 @Model
 class Log{
     var date: Date

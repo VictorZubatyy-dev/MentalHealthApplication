@@ -15,7 +15,7 @@ struct MentalHealthApplicati4onApp: App {
     
     init() {
         do {
-            modelContainer = try ModelContainer(for: Log.self, Alcohol.self)
+            modelContainer = try ModelContainer(for: Log.self)
         } catch {
             fatalError("Could not initialize ModelContainer")
         }

@@ -25,9 +25,8 @@ struct LogView: View {
                             Text(log.title).bold().font(.title2)
                         }
                         
-                        if let song = log.song.first?.songAlbumName{
-                            if !song.isEmpty{
-                                if log.song.count >= 1 && log.song.count < 3{
+                        if let album = log.song.first?.songAlbumName{
+                            if !album.isEmpty{
                                     VStack(alignment: .leading){
                                         ForEach(log.song, id: \.songID){song in
                                             Text(song.songAlbumName + song.songArtistName)
@@ -49,8 +48,6 @@ struct LogView: View {
                                     })
                                 }
                             }
-                        }
-                        
                         
                         else{
                             EmptyView()
@@ -149,6 +146,7 @@ struct LogView: View {
     }
     
     
+//    filter initialisation
     init(allEntries: Bool,
          searchDate: Date,
          chosenMood: String) {
@@ -175,6 +173,7 @@ struct LogView: View {
         }
     }
     
+//    delete logs function
     func deleteEntries(_ indexSet: IndexSet){
         for index in indexSet{
             let log = logs[index]

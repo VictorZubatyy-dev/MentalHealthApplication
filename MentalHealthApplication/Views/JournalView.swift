@@ -21,7 +21,6 @@ extension View {
 
 struct JournalView: View {
     @Environment(\.modelContext) var modelContext
-    @AppStorage("userCreated") private var userCreated = ""
     @AppStorage("userName") private var userName = ""
     @State private var selectedEmoji = ""
     @State private var path = [Log]()
@@ -30,7 +29,9 @@ struct JournalView: View {
     ///Background colour
     let gradient = ColorPallete()
     @State private var logDate = Date()
+//    MoodView picker value
     @State var chosenMood = "none"
+//    filter values
     @State private var allEntries = true
     @State private var showingDateSheet = false
     @State private var showingMoodSheet = false
@@ -79,6 +80,7 @@ struct JournalView: View {
         }
     }
     
+//    add log function
     func addEntry(){
         ///Initialise objects
         let caffeine = Caffeine(caffeineType: CaffeineType.none, caffeineTeaType: CaffeineTeaType.black, caffeineCoffeeType: CaffeineCoffeeType.Americano, caffeineTeaTypeAmount: CaffeineTeaTypeAmount.Cup, caffeineCoffeeTypeAmount: CaffeineCoffeeTypeAmount.Small, caffeineBeverageTypeAmountValue: 0.0)

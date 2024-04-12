@@ -9,7 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct OnboardingHealthScreen: View {
+//    awakenings picker values
     let awakenings = Array(0...4)
+//    exerciseFrequencys picker values
     let exerciseFrequencys = Array(0...5)
     @State private var selectedValue: Int = 0
     let numbers: [Int] = stride(from: 5, through: 90, by: 5).map { $0 }
@@ -90,20 +92,20 @@ struct OnboardingHealthScreen: View {
                     
                     HStack(alignment: .center, spacing: 0) {
                         Text("Bedtime Goal")
-                        // Picker for bedtime hours
+                        // Picker for hours
                         Picker("Hours", selection: $userSleepBedTimeHour) {
                             ForEach(hoursBedTime, id: \.self) { hour in
-                                Text("\(hour) hr").tag(hour)
+                                Text("\(hour)").tag(hour)
                             }
                         }
                         .pickerStyle(WheelPickerStyle())
                         .frame(width: 125, alignment: .center)
                         .clipped()
                         
-                        // Picker for bedtime minutes
+                        // Picker for minutes
                         Picker("Minutes", selection: $userSleepBedTimeMinute) {
                             ForEach(minutesBedTime, id: \.self) { minute in
-                                Text("\(minute) min").tag(minute)
+                                Text("\(minute)").tag(minute)
                             }
                         }
                         .pickerStyle(WheelPickerStyle())
@@ -111,7 +113,7 @@ struct OnboardingHealthScreen: View {
                         .clipped()
                     }
                     .frame(height: 100)
-                    Text("Selected Goal: \(userSleepBedTimeHour) hour(s) and \(userSleepBedTimeMinute) minute(s)")
+                    Text("Selected Goal: \(userSleepBedTimeHour):\(userSleepBedTimeMinute)")
                         .padding(.top, 20)
                 }
             }

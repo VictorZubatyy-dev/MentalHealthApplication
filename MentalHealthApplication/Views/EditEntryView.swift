@@ -95,9 +95,7 @@ struct EditEntryView: View {
                             }.frame(height: 5)
                         }
                         .frame(alignment: .trailing)
-                        
-                        
-                        
+                                                
                         TextField(logEntryText, text:$log.entry, axis: .vertical)
                             .focused($entryIsFocused)
                             .textFieldStyle(.roundedBorder)
@@ -124,10 +122,8 @@ struct EditEntryView: View {
                                 log.title = suggestionSongTitle
                             }
                             suggestionSong = await suggestion.content(forType: JournalingSuggestion.Song.self)
-                            print(suggestionSong.count)
                             if suggestionSong.count > 2{
                                 showingAlert.toggle()
-                                print(showingAlert)
                             }
                             
                             else{
@@ -379,10 +375,8 @@ struct EditEntryView: View {
                             log.title = suggestionSongTitle
                         }
                         suggestionSong = await suggestion.content(forType: JournalingSuggestion.Song.self)
-                        print(suggestionSong.count)
                         if suggestionSong.count > 2{
                             showingAlert.toggle()
-                            print(showingAlert)
                         }
                         
                         else{

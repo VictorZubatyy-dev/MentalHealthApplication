@@ -43,6 +43,7 @@ struct HealthView: View {
 
     @State private var moods: NSSet.Element = ""
     @State private var moodss = ""
+//    default HK authorisation status
     @State private var sharing: HKAuthorizationStatus = HKAuthorizationStatus.notDetermined
     @State private var sharingExerciseTime: HKAuthorizationStatus = HKAuthorizationStatus.notDetermined
     

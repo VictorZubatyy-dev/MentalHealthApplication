@@ -12,9 +12,7 @@ extension Color {
 }
 
 struct OnboardingView: View {
-    @Environment(\.modelContext) var modelContext
     @AppStorage("userCreated") private var userCreated = ""
-    @AppStorage("userName") private var userName = ""
     
     @State private var selectedView = 1
     let maxNumberOfScreens = 2

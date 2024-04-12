@@ -14,6 +14,7 @@
 		1C263CC42BA099F50019EE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C263CC32BA099F50019EE08 /* Assets.xcassets */; };
 		1C3D64F32BC30C5700EF7469 /* MoodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */; };
 		1C471E292B7D5F4800222F7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C471E282B7D5F4800222F7A /* ContentView.swift */; };
+		1C8574512BC9A441000BB658 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C8574502BC9A441000BB658 /* Launch Screen.storyboard */; };
 		1C91CE622B1CC101003FF404 /* MentalHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */; };
 		1C91CE692B1CC103003FF404 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C91CE682B1CC103003FF404 /* Preview Assets.xcassets */; };
 		1C91CE742B1CCA54003FF404 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C91CE732B1CCA54003FF404 /* Model.swift */; };
@@ -39,6 +40,7 @@
 		1C263CC32BA099F50019EE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C3D64F22BC30C5700EF7469 /* MoodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInfoView.swift; sourceTree = "<group>"; };
 		1C471E282B7D5F4800222F7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1C8574502BC9A441000BB658 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1C91CE5E2B1CC101003FF404 /* MentalHealthApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalHealthApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C91CE612B1CC101003FF404 /* MentalHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalHealthApp.swift; sourceTree = "<group>"; };
 		1C91CE682B1CC103003FF404 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				1C1394482BB871F50018C8C7 /* Colours */,
 				1C13944B2BB8724D0018C8C7 /* DateFormatter */,
 				1C91CE672B1CC103003FF404 /* Preview Content */,
+				1C8574502BC9A441000BB658 /* Launch Screen.storyboard */,
 			);
 			path = MentalHealthApplication;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C8574512BC9A441000BB658 /* Launch Screen.storyboard in Resources */,
 				1C91CE692B1CC103003FF404 /* Preview Assets.xcassets in Resources */,
 				1C263CC42BA099F50019EE08 /* Assets.xcassets in Resources */,
 			);
@@ -397,13 +401,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MentalHealthApplication/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = mentjour.;
+				INFOPLIST_KEY_CFBundleDisplayName = mentjour;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This data will be used to display and calculate health related data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This data will be used to write health related data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -433,13 +438,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MentalHealthApplication/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = mentjour.;
+				INFOPLIST_KEY_CFBundleDisplayName = mentjour;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This data will be used to display and calculate health related data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This data will be used to write health related data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;

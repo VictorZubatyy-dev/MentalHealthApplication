@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct OnboardingUserScreen: View {
-    @Environment(\.modelContext) var modelContext
     @AppStorage("userName") private var userName = ""
     @AppStorage("userAge") private var userAge = 0
     @AppStorage("userGender") private var userGender = ""
